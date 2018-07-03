@@ -1,0 +1,43 @@
+00 addu $t0,$0,$0
+04 addi $t1,$0,10
+08 addi $t2,$0,13
+12 mul $t3,$t1,$t1
+16 j Jump
+
+bubble:
+	20 li $t0,10
+	24 li $t1,4
+	28 mul $t4,$t0,$t1
+** 14
+other:
+	32 addi $t6,$0,8
+	36 subu $t0,$t4,$t6
+	40 li $t1,0
+
+inner:
+	44 lw $t2,4($t0)
+	48 lw $t3,0($t0)
+	52 ble $t2,$t3,no_swap
+	56 sw $t2,0($t0)
+	60 sw $t3,4($t0)
+	64 li $t1,1
+
+no_swap:
+	68 addi $t5,$0,4
+	72 subu $t0,$t0,$t5
+	76 bltz $t0,next_turn
+	80 j inner
+
+next_turn:
+	84 bnez $t1,outer
+	88 j End
+
+Jump:
+	92 subu $t2,$t2,$t1
+
+Loop:
+	96 addu $t4,$t3,$t2
+	100 beq $t1,$t2,Loop
+	104 j bubble
+
+End:

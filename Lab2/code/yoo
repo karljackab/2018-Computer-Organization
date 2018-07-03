@@ -1,0 +1,3429 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x13937d0 .scope module, "TestBench" "TestBench" 2 14;
+ .timescale 0 0;
+v0x13f39b0_0 .var "CLK", 0 0;
+v0x13f3a30_0 .var "RST", 0 0;
+v0x13f3ab0_0 .var/i "count", 31 0;
+v0x13f3b30_0 .var/i "end_count", 31 0;
+v0x13f3bb0_0 .var/i "handle", 31 0;
+S_0x1390690 .scope module, "cpu" "Simple_Single_CPU" 2 23, 3 11, S_0x13937d0;
+ .timescale 0 0;
+L_0x1403300 .functor AND 1, v0x13e7b90_0, v0x13e5e40_0, C4<1>, C4<1>;
+v0x13f22f0_0 .net "ALUCtrl", 3 0, v0x13e7600_0; 1 drivers
+v0x13f23c0_0 .net "ALUOp", 2 0, v0x13e7ae0_0; 1 drivers
+v0x13f2490_0 .net "ALUSrc", 0 0, v0x13e7a10_0; 1 drivers
+v0x13f2560_0 .net "ALUSrc2", 0 0, v0x13e7750_0; 1 drivers
+v0x13f2630_0 .net "ExtendMult", 0 0, v0x13e7e20_0; 1 drivers
+v0x13f2700_0 .net "RS", 31 0, L_0x13f2b10; 1 drivers
+v0x13f27d0_0 .net "RT", 31 0, L_0x13fa7c0; 1 drivers
+v0x13f28a0_0 .net "RegDst", 0 0, v0x13e7cc0_0; 1 drivers
+v0x13f29c0_0 .net "RegWrite", 0 0, v0x13e7d40_0; 1 drivers
+v0x13f2a90_0 .var "Reg_current_program", 31 0;
+v0x13f2b70_0 .net "RsALU", 31 0, v0x13e6890_0; 1 drivers
+v0x13f2bf0_0 .net "RtALU", 31 0, v0x13e6410_0; 1 drivers
+v0x13f2d30_0 .net "SignExtend", 31 0, L_0x14008d0; 1 drivers
+v0x13f2e00_0 .net "ZeroExtend", 31 0, L_0x1400d90; 1 drivers
+v0x13f2f50_0 .net *"_s18", 26 0, C4<000000000000000000000000000>; 1 drivers
+v0x13f2fd0_0 .net *"_s21", 4 0, L_0x1400f70; 1 drivers
+RS_0x7f02362ef018/0/0 .resolv tri, L_0x13f4650, L_0x13f52e0, L_0x13f5f80, L_0x13f6cd0;
+RS_0x7f02362ef018/0/4 .resolv tri, L_0x13f7890, L_0x13f87b0, L_0x13f92e0, L_0x13fa310;
+RS_0x7f02362ef018 .resolv tri, RS_0x7f02362ef018/0/0, RS_0x7f02362ef018/0/4, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>;
+v0x13f2e80_0 .net8 "addr_next", 31 0, RS_0x7f02362ef018; 8 drivers
+v0x13f30e0_0 .net "addr_now", 31 0, v0x13f2170_0; 1 drivers
+RS_0x7f02362ef048/0/0 .resolv tri, L_0x1401ba0, L_0x14027f0, L_0x14035a0, L_0x1404200;
+RS_0x7f02362ef048/0/4 .resolv tri, L_0x13f7b90, L_0x1405e90, L_0x1406a30, L_0x1407950;
+RS_0x7f02362ef048 .resolv tri, RS_0x7f02362ef048/0/0, RS_0x7f02362ef048/0/4, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>;
+v0x13f3050_0 .net8 "addr_plus", 31 0, RS_0x7f02362ef048; 8 drivers
+v0x13f3250_0 .net "branch", 0 0, v0x13e7b90_0; 1 drivers
+v0x13f3160_0 .net "clk_i", 0 0, v0x13f39b0_0; 1 drivers
+v0x13f33d0_0 .net "current_program", 31 0, v0x13e0d10_0; 1 drivers
+v0x13f32d0_0 .net "extend", 31 0, v0x13e6d30_0; 1 drivers
+v0x13f3510_0 .net "extendShift", 31 0, L_0x1407c00; 1 drivers
+v0x13f3660_0 .net "instruction", 31 0, v0x13ed4d0_0; 1 drivers
+v0x13f36e0_0 .net "result", 31 0, v0x13e5da0_0; 1 drivers
+v0x13f3590_0 .net "rst_i", 0 0, v0x13f3a30_0; 1 drivers
+v0x13f3840_0 .net "writeReg", 4 0, v0x13ed100_0; 1 drivers
+v0x13f37b0_0 .net "zero", 0 0, v0x13e5e40_0; 1 drivers
+E_0x1360dc0 .event edge, v0x13e0d10_0;
+L_0x13fa4f0 .part v0x13ed4d0_0, 16, 5;
+L_0x13fa590 .part v0x13ed4d0_0, 11, 5;
+L_0x13fa870 .part v0x13ed4d0_0, 21, 5;
+L_0x13fa9f0 .part v0x13ed4d0_0, 16, 5;
+L_0x1400010 .part v0x13ed4d0_0, 26, 6;
+L_0x14000b0 .part v0x13ed4d0_0, 0, 6;
+L_0x14009c0 .part v0x13ed4d0_0, 0, 16;
+L_0x1400e30 .part v0x13ed4d0_0, 0, 16;
+L_0x1400f70 .part v0x13ed4d0_0, 6, 5;
+L_0x1401010 .concat [ 5 27 0 0], L_0x1400f70, C4<000000000000000000000000000>;
+S_0x13f1f10 .scope module, "PC" "ProgramCounter" 3 59, 4 12, S_0x1390690;
+ .timescale 0 0;
+v0x13f2020_0 .alias "clk_i", 0 0, v0x13f3160_0;
+v0x13f20f0_0 .net "pc_in_i", 31 0, v0x13f2a90_0; 1 drivers
+v0x13f2170_0 .var "pc_out_o", 31 0;
+v0x13f2240_0 .alias "rst_i", 0 0, v0x13f3590_0;
+E_0x13e5440 .event posedge, v0x13eccc0_0;
+S_0x13ed620 .scope module, "Adder1" "Adder" 3 66, 5 12, S_0x1390690;
+ .timescale 0 0;
+RS_0x7f02362f2d68/0/0 .resolv tri, L_0x13f4780, L_0x13f53d0, L_0x13f6020, L_0x13f6e10;
+RS_0x7f02362f2d68/0/4 .resolv tri, L_0x13f7cc0, L_0x13f86d0, L_0x13f95c0, L_0x13fa1e0;
+RS_0x7f02362f2d68 .resolv tri, RS_0x7f02362f2d68/0/0, RS_0x7f02362f2d68/0/4, C4<zzzzzzzz>, C4<zzzzzzzz>;
+v0x13f1ca0_0 .net8 "c", 7 0, RS_0x7f02362f2d68; 8 drivers
+v0x13f1d60_0 .alias "src1_i", 31 0, v0x13f30e0_0;
+v0x13f1de0_0 .net "src2_i", 31 0, C4<00000000000000000000000000000100>; 1 drivers
+v0x13f1e60_0 .alias "sum_o", 31 0, v0x13f2e80_0;
+L_0x13f4480 .part v0x13f2170_0, 0, 4;
+L_0x13f45b0 .part C4<00000000000000000000000000000100>, 0, 4;
+RS_0x7f02362f2d38 .resolv tri, L_0x13f3c30, L_0x13f3dc0, L_0x13f3ff0, L_0x13f4180;
+L_0x13f4650 .part/pv RS_0x7f02362f2d38, 0, 4, 32;
+L_0x13f4780 .part/pv L_0x13f43e0, 0, 1, 8;
+L_0x13f5060 .part v0x13f2170_0, 4, 4;
+L_0x13f5100 .part C4<00000000000000000000000000000100>, 4, 4;
+L_0x13f51f0 .part RS_0x7f02362f2d68, 0, 1;
+RS_0x7f02362f2b28 .resolv tri, L_0x13f4820, L_0x13f4960, L_0x13f4b90, L_0x13f4d60;
+L_0x13f52e0 .part/pv RS_0x7f02362f2b28, 4, 4, 32;
+L_0x13f53d0 .part/pv L_0x13f4fc0, 1, 1, 8;
+L_0x13f5d10 .part v0x13f2170_0, 8, 4;
+L_0x13f5db0 .part C4<00000000000000000000000000000100>, 8, 4;
+L_0x13f5e50 .part RS_0x7f02362f2d68, 1, 1;
+RS_0x7f02362f2918 .resolv tri, L_0x13f54c0, L_0x13f5650, L_0x13f5880, L_0x13f5a10;
+L_0x13f5f80 .part/pv RS_0x7f02362f2918, 8, 4, 32;
+L_0x13f6020 .part/pv L_0x13f5c70, 2, 1, 8;
+L_0x13f6940 .part v0x13f2170_0, 12, 4;
+L_0x13f6a10 .part C4<00000000000000000000000000000100>, 12, 4;
+L_0x13f6c00 .part RS_0x7f02362f2d68, 2, 1;
+RS_0x7f02362f2708 .resolv tri, L_0x13f6140, L_0x13f6280, L_0x13f64b0, L_0x13f6640;
+L_0x13f6cd0 .part/pv RS_0x7f02362f2708, 12, 4, 32;
+L_0x13f6e10 .part/pv L_0x13f68a0, 3, 1, 8;
+L_0x13f76b0 .part v0x13f2170_0, 16, 4;
+L_0x13f6d70 .part C4<00000000000000000000000000000100>, 16, 4;
+L_0x13f7940 .part RS_0x7f02362f2d68, 3, 1;
+RS_0x7f02362f24f8 .resolv tri, L_0x13f6eb0, L_0x13f6ff0, L_0x13f7220, L_0x13f73b0;
+L_0x13f7890 .part/pv RS_0x7f02362f24f8, 16, 4, 32;
+L_0x13f7cc0 .part/pv L_0x13f7610, 4, 1, 8;
+L_0x13f8590 .part v0x13f2170_0, 20, 4;
+L_0x13f8630 .part C4<00000000000000000000000000000100>, 20, 4;
+L_0x13f7d60 .part RS_0x7f02362f2d68, 4, 1;
+RS_0x7f02362f22e8 .resolv tri, L_0x13f7af0, L_0x13f7ed0, L_0x13f8100, L_0x13f8290;
+L_0x13f87b0 .part/pv RS_0x7f02362f22e8, 20, 4, 32;
+L_0x13f86d0 .part/pv L_0x13f84f0, 5, 1, 8;
+L_0x13f9210 .part v0x13f2170_0, 24, 4;
+L_0x13f8850 .part C4<00000000000000000000000000000100>, 24, 4;
+L_0x13f93e0 .part RS_0x7f02362f2d68, 5, 1;
+RS_0x7f02362f20d8 .resolv tri, L_0x13f8990, L_0x13f8b50, L_0x13f8d80, L_0x13f8f10;
+L_0x13f92e0 .part/pv RS_0x7f02362f20d8, 24, 4, 32;
+L_0x13f95c0 .part/pv L_0x13f9170, 6, 1, 8;
+L_0x13f9f30 .part v0x13f2170_0, 28, 4;
+L_0x13fa000 .part C4<00000000000000000000000000000100>, 28, 4;
+L_0x13f9660 .part RS_0x7f02362f2d68, 6, 1;
+RS_0x7f02362f1ec8 .resolv tri, L_0x13f94b0, L_0x13f9870, L_0x13f9aa0, L_0x13f9c30;
+L_0x13fa310 .part/pv RS_0x7f02362f1ec8, 28, 4, 32;
+L_0x13fa1e0 .part/pv L_0x13f9e90, 7, 1, 8;
+S_0x13f13f0 .scope module, "a1" "Adder_4bit" 5 30, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13f1530_0 .net *"_s11", 0 0, L_0x13f4090; 1 drivers
+v0x13f15f0_0 .net *"_s15", 0 0, L_0x13f42b0; 1 drivers
+v0x13f1690_0 .net *"_s3", 0 0, L_0x13f3cd0; 1 drivers
+v0x13f1730_0 .net *"_s7", 0 0, L_0x13f3eb0; 1 drivers
+v0x13f17e0_0 .var "c", 3 0;
+v0x13f1880_0 .net "cin_i", 0 0, C4<0>; 1 drivers
+v0x13f1920_0 .net "cout_o", 0 0, L_0x13f43e0; 1 drivers
+v0x13f19c0_0 .net "src1_i", 3 0, L_0x13f4480; 1 drivers
+v0x13f1a60_0 .net "src2_i", 3 0, L_0x13f45b0; 1 drivers
+v0x13f1b00_0 .var "sum", 3 0;
+v0x13f1c00_0 .net8 "sum_o", 3 0, RS_0x7f02362f2d38; 4 drivers
+E_0x13f0f00 .event edge, v0x13f19c0_0, v0x13f1a60_0, v0x13f1880_0, v0x13f17e0_0;
+L_0x13f3c30 .part/pv L_0x13f3cd0, 0, 1, 4;
+L_0x13f3cd0 .part v0x13f1b00_0, 0, 1;
+L_0x13f3dc0 .part/pv L_0x13f3eb0, 1, 1, 4;
+L_0x13f3eb0 .part v0x13f1b00_0, 1, 1;
+L_0x13f3ff0 .part/pv L_0x13f4090, 2, 1, 4;
+L_0x13f4090 .part v0x13f1b00_0, 2, 1;
+L_0x13f4180 .part/pv L_0x13f42b0, 3, 1, 4;
+L_0x13f42b0 .part v0x13f1b00_0, 3, 1;
+L_0x13f43e0 .part v0x13f17e0_0, 3, 1;
+S_0x13f0b40 .scope module, "a2" "Adder_4bit" 5 31, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13f0c80_0 .net *"_s11", 0 0, L_0x13f4c30; 1 drivers
+v0x13f0d40_0 .net *"_s15", 0 0, L_0x13f4e90; 1 drivers
+v0x13f0de0_0 .net *"_s3", 0 0, L_0x13f48c0; 1 drivers
+v0x13f0e80_0 .net *"_s7", 0 0, L_0x13f4a50; 1 drivers
+v0x13f0f30_0 .var "c", 3 0;
+v0x13f0fd0_0 .net "cin_i", 0 0, L_0x13f51f0; 1 drivers
+v0x13f1070_0 .net "cout_o", 0 0, L_0x13f4fc0; 1 drivers
+v0x13f1110_0 .net "src1_i", 3 0, L_0x13f5060; 1 drivers
+v0x13f11b0_0 .net "src2_i", 3 0, L_0x13f5100; 1 drivers
+v0x13f1250_0 .var "sum", 3 0;
+v0x13f1350_0 .net8 "sum_o", 3 0, RS_0x7f02362f2b28; 4 drivers
+E_0x13f0650 .event edge, v0x13f1110_0, v0x13f11b0_0, v0x13f0fd0_0, v0x13f0f30_0;
+L_0x13f4820 .part/pv L_0x13f48c0, 0, 1, 4;
+L_0x13f48c0 .part v0x13f1250_0, 0, 1;
+L_0x13f4960 .part/pv L_0x13f4a50, 1, 1, 4;
+L_0x13f4a50 .part v0x13f1250_0, 1, 1;
+L_0x13f4b90 .part/pv L_0x13f4c30, 2, 1, 4;
+L_0x13f4c30 .part v0x13f1250_0, 2, 1;
+L_0x13f4d60 .part/pv L_0x13f4e90, 3, 1, 4;
+L_0x13f4e90 .part v0x13f1250_0, 3, 1;
+L_0x13f4fc0 .part v0x13f0f30_0, 3, 1;
+S_0x13f0290 .scope module, "a3" "Adder_4bit" 5 32, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13f03d0_0 .net *"_s11", 0 0, L_0x13f5920; 1 drivers
+v0x13f0490_0 .net *"_s15", 0 0, L_0x13f5b40; 1 drivers
+v0x13f0530_0 .net *"_s3", 0 0, L_0x13f5560; 1 drivers
+v0x13f05d0_0 .net *"_s7", 0 0, L_0x13f5740; 1 drivers
+v0x13f0680_0 .var "c", 3 0;
+v0x13f0720_0 .net "cin_i", 0 0, L_0x13f5e50; 1 drivers
+v0x13f07c0_0 .net "cout_o", 0 0, L_0x13f5c70; 1 drivers
+v0x13f0860_0 .net "src1_i", 3 0, L_0x13f5d10; 1 drivers
+v0x13f0900_0 .net "src2_i", 3 0, L_0x13f5db0; 1 drivers
+v0x13f09a0_0 .var "sum", 3 0;
+v0x13f0aa0_0 .net8 "sum_o", 3 0, RS_0x7f02362f2918; 4 drivers
+E_0x13efda0 .event edge, v0x13f0860_0, v0x13f0900_0, v0x13f0720_0, v0x13f0680_0;
+L_0x13f54c0 .part/pv L_0x13f5560, 0, 1, 4;
+L_0x13f5560 .part v0x13f09a0_0, 0, 1;
+L_0x13f5650 .part/pv L_0x13f5740, 1, 1, 4;
+L_0x13f5740 .part v0x13f09a0_0, 1, 1;
+L_0x13f5880 .part/pv L_0x13f5920, 2, 1, 4;
+L_0x13f5920 .part v0x13f09a0_0, 2, 1;
+L_0x13f5a10 .part/pv L_0x13f5b40, 3, 1, 4;
+L_0x13f5b40 .part v0x13f09a0_0, 3, 1;
+L_0x13f5c70 .part v0x13f0680_0, 3, 1;
+S_0x13ef9e0 .scope module, "a4" "Adder_4bit" 5 33, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13efb20_0 .net *"_s11", 0 0, L_0x13f6550; 1 drivers
+v0x13efbe0_0 .net *"_s15", 0 0, L_0x13f6770; 1 drivers
+v0x13efc80_0 .net *"_s3", 0 0, L_0x13f61e0; 1 drivers
+v0x13efd20_0 .net *"_s7", 0 0, L_0x13f6370; 1 drivers
+v0x13efdd0_0 .var "c", 3 0;
+v0x13efe70_0 .net "cin_i", 0 0, L_0x13f6c00; 1 drivers
+v0x13eff10_0 .net "cout_o", 0 0, L_0x13f68a0; 1 drivers
+v0x13effb0_0 .net "src1_i", 3 0, L_0x13f6940; 1 drivers
+v0x13f0050_0 .net "src2_i", 3 0, L_0x13f6a10; 1 drivers
+v0x13f00f0_0 .var "sum", 3 0;
+v0x13f01f0_0 .net8 "sum_o", 3 0, RS_0x7f02362f2708; 4 drivers
+E_0x13ef4f0 .event edge, v0x13effb0_0, v0x13f0050_0, v0x13efe70_0, v0x13efdd0_0;
+L_0x13f6140 .part/pv L_0x13f61e0, 0, 1, 4;
+L_0x13f61e0 .part v0x13f00f0_0, 0, 1;
+L_0x13f6280 .part/pv L_0x13f6370, 1, 1, 4;
+L_0x13f6370 .part v0x13f00f0_0, 1, 1;
+L_0x13f64b0 .part/pv L_0x13f6550, 2, 1, 4;
+L_0x13f6550 .part v0x13f00f0_0, 2, 1;
+L_0x13f6640 .part/pv L_0x13f6770, 3, 1, 4;
+L_0x13f6770 .part v0x13f00f0_0, 3, 1;
+L_0x13f68a0 .part v0x13efdd0_0, 3, 1;
+S_0x13ef130 .scope module, "a5" "Adder_4bit" 5 34, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13ef270_0 .net *"_s11", 0 0, L_0x13f72c0; 1 drivers
+v0x13ef330_0 .net *"_s15", 0 0, L_0x13f74e0; 1 drivers
+v0x13ef3d0_0 .net *"_s3", 0 0, L_0x13f6f50; 1 drivers
+v0x13ef470_0 .net *"_s7", 0 0, L_0x13f70e0; 1 drivers
+v0x13ef520_0 .var "c", 3 0;
+v0x13ef5c0_0 .net "cin_i", 0 0, L_0x13f7940; 1 drivers
+v0x13ef660_0 .net "cout_o", 0 0, L_0x13f7610; 1 drivers
+v0x13ef700_0 .net "src1_i", 3 0, L_0x13f76b0; 1 drivers
+v0x13ef7a0_0 .net "src2_i", 3 0, L_0x13f6d70; 1 drivers
+v0x13ef840_0 .var "sum", 3 0;
+v0x13ef940_0 .net8 "sum_o", 3 0, RS_0x7f02362f24f8; 4 drivers
+E_0x13eec40 .event edge, v0x13ef700_0, v0x13ef7a0_0, v0x13ef5c0_0, v0x13ef520_0;
+L_0x13f6eb0 .part/pv L_0x13f6f50, 0, 1, 4;
+L_0x13f6f50 .part v0x13ef840_0, 0, 1;
+L_0x13f6ff0 .part/pv L_0x13f70e0, 1, 1, 4;
+L_0x13f70e0 .part v0x13ef840_0, 1, 1;
+L_0x13f7220 .part/pv L_0x13f72c0, 2, 1, 4;
+L_0x13f72c0 .part v0x13ef840_0, 2, 1;
+L_0x13f73b0 .part/pv L_0x13f74e0, 3, 1, 4;
+L_0x13f74e0 .part v0x13ef840_0, 3, 1;
+L_0x13f7610 .part v0x13ef520_0, 3, 1;
+S_0x13ee880 .scope module, "a6" "Adder_4bit" 5 35, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13ee9c0_0 .net *"_s11", 0 0, L_0x13f81a0; 1 drivers
+v0x13eea80_0 .net *"_s15", 0 0, L_0x13f83c0; 1 drivers
+v0x13eeb20_0 .net *"_s3", 0 0, L_0x13f7e30; 1 drivers
+v0x13eebc0_0 .net *"_s7", 0 0, L_0x13f7fc0; 1 drivers
+v0x13eec70_0 .var "c", 3 0;
+v0x13eed10_0 .net "cin_i", 0 0, L_0x13f7d60; 1 drivers
+v0x13eedb0_0 .net "cout_o", 0 0, L_0x13f84f0; 1 drivers
+v0x13eee50_0 .net "src1_i", 3 0, L_0x13f8590; 1 drivers
+v0x13eeef0_0 .net "src2_i", 3 0, L_0x13f8630; 1 drivers
+v0x13eef90_0 .var "sum", 3 0;
+v0x13ef090_0 .net8 "sum_o", 3 0, RS_0x7f02362f22e8; 4 drivers
+E_0x13ee390 .event edge, v0x13eee50_0, v0x13eeef0_0, v0x13eed10_0, v0x13eec70_0;
+L_0x13f7af0 .part/pv L_0x13f7e30, 0, 1, 4;
+L_0x13f7e30 .part v0x13eef90_0, 0, 1;
+L_0x13f7ed0 .part/pv L_0x13f7fc0, 1, 1, 4;
+L_0x13f7fc0 .part v0x13eef90_0, 1, 1;
+L_0x13f8100 .part/pv L_0x13f81a0, 2, 1, 4;
+L_0x13f81a0 .part v0x13eef90_0, 2, 1;
+L_0x13f8290 .part/pv L_0x13f83c0, 3, 1, 4;
+L_0x13f83c0 .part v0x13eef90_0, 3, 1;
+L_0x13f84f0 .part v0x13eec70_0, 3, 1;
+S_0x13edfd0 .scope module, "a7" "Adder_4bit" 5 36, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13ee110_0 .net *"_s11", 0 0, L_0x13f8e20; 1 drivers
+v0x13ee1d0_0 .net *"_s15", 0 0, L_0x13f9040; 1 drivers
+v0x13ee270_0 .net *"_s3", 0 0, L_0x13f8a30; 1 drivers
+v0x13ee310_0 .net *"_s7", 0 0, L_0x13f8c40; 1 drivers
+v0x13ee3c0_0 .var "c", 3 0;
+v0x13ee460_0 .net "cin_i", 0 0, L_0x13f93e0; 1 drivers
+v0x13ee500_0 .net "cout_o", 0 0, L_0x13f9170; 1 drivers
+v0x13ee5a0_0 .net "src1_i", 3 0, L_0x13f9210; 1 drivers
+v0x13ee640_0 .net "src2_i", 3 0, L_0x13f8850; 1 drivers
+v0x13ee6e0_0 .var "sum", 3 0;
+v0x13ee7e0_0 .net8 "sum_o", 3 0, RS_0x7f02362f20d8; 4 drivers
+E_0x13edb00 .event edge, v0x13ee5a0_0, v0x13ee640_0, v0x13ee460_0, v0x13ee3c0_0;
+L_0x13f8990 .part/pv L_0x13f8a30, 0, 1, 4;
+L_0x13f8a30 .part v0x13ee6e0_0, 0, 1;
+L_0x13f8b50 .part/pv L_0x13f8c40, 1, 1, 4;
+L_0x13f8c40 .part v0x13ee6e0_0, 1, 1;
+L_0x13f8d80 .part/pv L_0x13f8e20, 2, 1, 4;
+L_0x13f8e20 .part v0x13ee6e0_0, 2, 1;
+L_0x13f8f10 .part/pv L_0x13f9040, 3, 1, 4;
+L_0x13f9040 .part v0x13ee6e0_0, 3, 1;
+L_0x13f9170 .part v0x13ee3c0_0, 3, 1;
+S_0x13ed710 .scope module, "a8" "Adder_4bit" 5 37, 6 12, S_0x13ed620;
+ .timescale 0 0;
+v0x13ed880_0 .net *"_s11", 0 0, L_0x13f9b40; 1 drivers
+v0x13ed940_0 .net *"_s15", 0 0, L_0x13f9d60; 1 drivers
+v0x13ed9e0_0 .net *"_s3", 0 0, L_0x13f9780; 1 drivers
+v0x13eda80_0 .net *"_s7", 0 0, L_0x13f9960; 1 drivers
+v0x13edb30_0 .var "c", 3 0;
+v0x13edbd0_0 .net "cin_i", 0 0, L_0x13f9660; 1 drivers
+v0x13edcb0_0 .net "cout_o", 0 0, L_0x13f9e90; 1 drivers
+v0x13edd50_0 .net "src1_i", 3 0, L_0x13f9f30; 1 drivers
+v0x13eddf0_0 .net "src2_i", 3 0, L_0x13fa000; 1 drivers
+v0x13ede90_0 .var "sum", 3 0;
+v0x13edf30_0 .net8 "sum_o", 3 0, RS_0x7f02362f1ec8; 4 drivers
+E_0x13ed800 .event edge, v0x13edd50_0, v0x13eddf0_0, v0x13edbd0_0, v0x13edb30_0;
+L_0x13f94b0 .part/pv L_0x13f9780, 0, 1, 4;
+L_0x13f9780 .part v0x13ede90_0, 0, 1;
+L_0x13f9870 .part/pv L_0x13f9960, 1, 1, 4;
+L_0x13f9960 .part v0x13ede90_0, 1, 1;
+L_0x13f9aa0 .part/pv L_0x13f9b40, 2, 1, 4;
+L_0x13f9b40 .part v0x13ede90_0, 2, 1;
+L_0x13f9c30 .part/pv L_0x13f9d60, 3, 1, 4;
+L_0x13f9d60 .part v0x13ede90_0, 3, 1;
+L_0x13f9e90 .part v0x13edb30_0, 3, 1;
+S_0x13ed290 .scope module, "IM" "Instr_Memory" 3 72, 7 12, S_0x1390690;
+ .timescale 0 0;
+v0x13ed3b0 .array "Instr_Mem", 31 0, 31 0;
+v0x13ed430_0 .var/i "i", 31 0;
+v0x13ed4d0_0 .var "instr_o", 31 0;
+v0x13ed570_0 .alias "pc_addr_i", 31 0, v0x13f30e0_0;
+E_0x13ed380 .event edge, v0x13ed570_0;
+S_0x13ecde0 .scope module, "Mux_Write_Reg" "MUX_2to1" 3 77, 8 12, S_0x1390690;
+ .timescale 0 0;
+P_0x13e7dc8 .param/l "size" 8 19, +C4<0101>;
+v0x13ecfa0_0 .net "data0_i", 4 0, L_0x13fa4f0; 1 drivers
+v0x13ed060_0 .net "data1_i", 4 0, L_0x13fa590; 1 drivers
+v0x13ed100_0 .var "data_o", 4 0;
+v0x13ed1b0_0 .alias "select_i", 0 0, v0x13f28a0_0;
+E_0x13ecf50 .event edge, v0x13e7cc0_0, v0x13ed060_0, v0x13ecfa0_0;
+S_0x13ec140 .scope module, "RF" "Reg_File" 3 84, 9 11, S_0x1390690;
+ .timescale 0 0;
+L_0x13f2b10 .functor BUFZ 32, L_0x13fa630, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x13fa7c0 .functor BUFZ 32, L_0x13fa720, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x13ec2a0_0 .alias "RDaddr_i", 4 0, v0x13f3840_0;
+v0x13ec360_0 .alias "RDdata_i", 31 0, v0x13f36e0_0;
+v0x13ec410_0 .net "RSaddr_i", 4 0, L_0x13fa870; 1 drivers
+v0x13ec8b0_0 .alias "RSdata_o", 31 0, v0x13f2700_0;
+v0x13ec990_0 .net "RTaddr_i", 4 0, L_0x13fa9f0; 1 drivers
+v0x13eca10_0 .alias "RTdata_o", 31 0, v0x13f27d0_0;
+v0x13eca90_0 .alias "RegWrite_i", 0 0, v0x13f29c0_0;
+v0x13ecb40 .array/s "Reg_File", 31 0, 31 0;
+v0x13ecbc0_0 .net *"_s0", 31 0, L_0x13fa630; 1 drivers
+v0x13ecc40_0 .net *"_s4", 31 0, L_0x13fa720; 1 drivers
+v0x13eccc0_0 .alias "clk_i", 0 0, v0x13f3160_0;
+v0x13ecd40_0 .alias "rst_i", 0 0, v0x13f3590_0;
+E_0x13ec230 .event posedge, v0x13eccc0_0, v0x13ecd40_0;
+L_0x13fa630 .array/port v0x13ecb40, L_0x13fa870;
+L_0x13fa720 .array/port v0x13ecb40, L_0x13fa9f0;
+S_0x13e78b0 .scope module, "Decoder" "Decoder" 3 96, 10 12, S_0x1390690;
+ .timescale 0 0;
+L_0x13f6b10 .functor NOT 1, L_0x13faae0, C4<0>, C4<0>, C4<0>;
+L_0x13facf0 .functor NOT 1, L_0x13fac00, C4<0>, C4<0>, C4<0>;
+L_0x13fada0 .functor AND 1, L_0x13f6b10, L_0x13facf0, C4<1>, C4<1>;
+L_0x13faf40 .functor NOT 1, L_0x13faea0, C4<0>, C4<0>, C4<0>;
+L_0x13faff0 .functor AND 1, L_0x13fada0, L_0x13faf40, C4<1>, C4<1>;
+L_0x13fb250 .functor NOT 1, L_0x13fb120, C4<0>, C4<0>, C4<0>;
+L_0x13fb2e0 .functor AND 1, L_0x13faff0, L_0x13fb250, C4<1>, C4<1>;
+L_0x13fb480 .functor NOT 1, L_0x13fb3e0, C4<0>, C4<0>, C4<0>;
+L_0x13fb580 .functor AND 1, L_0x13fb2e0, L_0x13fb480, C4<1>, C4<1>;
+L_0x13fb720 .functor NOT 1, L_0x13fb680, C4<0>, C4<0>, C4<0>;
+L_0x13fb830 .functor AND 1, L_0x13fb580, L_0x13fb720, C4<1>, C4<1>;
+L_0x13fb980 .functor NOT 1, L_0x13fb8e0, C4<0>, C4<0>, C4<0>;
+L_0x13fb7d0 .functor NOT 1, L_0x13fba30, C4<0>, C4<0>, C4<0>;
+L_0x13fbc30 .functor AND 1, L_0x13fb980, L_0x13fb7d0, C4<1>, C4<1>;
+L_0x13fbdd0 .functor NOT 1, L_0x13fbd30, C4<0>, C4<0>, C4<0>;
+L_0x13fbe80 .functor AND 1, L_0x13fbc30, L_0x13fbdd0, C4<1>, C4<1>;
+L_0x13fc0b0 .functor AND 1, L_0x13fbe80, L_0x13fc010, C4<1>, C4<1>;
+L_0x13fc250 .functor NOT 1, L_0x13fc1b0, C4<0>, C4<0>, C4<0>;
+L_0x13fbf80 .functor AND 1, L_0x13fc0b0, L_0x13fc250, C4<1>, C4<1>;
+L_0x13fb1c0 .functor NOT 1, L_0x13fc440, C4<0>, C4<0>, C4<0>;
+L_0x13fc300 .functor AND 1, L_0x13fbf80, L_0x13fb1c0, C4<1>, C4<1>;
+L_0x13fc720 .functor NOT 1, L_0x13fc680, C4<0>, C4<0>, C4<0>;
+L_0x13fc890 .functor NOT 1, L_0x13fc530, C4<0>, C4<0>, C4<0>;
+L_0x13fc940 .functor AND 1, L_0x13fc720, L_0x13fc890, C4<1>, C4<1>;
+L_0x13fcb10 .functor AND 1, L_0x13fc940, L_0x13fc7d0, C4<1>, C4<1>;
+L_0x13fbb60 .functor NOT 1, L_0x13fcc10, C4<0>, C4<0>, C4<0>;
+L_0x13fca40 .functor AND 1, L_0x13fcb10, L_0x13fbb60, C4<1>, C4<1>;
+L_0x13fd0e0 .functor NOT 1, L_0x13fd040, C4<0>, C4<0>, C4<0>;
+L_0x13fcf10 .functor AND 1, L_0x13fca40, L_0x13fd0e0, C4<1>, C4<1>;
+L_0x13fbad0 .functor NOT 1, L_0x13fd2d0, C4<0>, C4<0>, C4<0>;
+L_0x13fd190 .functor AND 1, L_0x13fcf10, L_0x13fbad0, C4<1>, C4<1>;
+L_0x13fd650 .functor NOT 1, L_0x13fd5b0, C4<0>, C4<0>, C4<0>;
+L_0x13fd500 .functor NOT 1, L_0x13fd460, C4<0>, C4<0>, C4<0>;
+L_0x13fd8c0 .functor AND 1, L_0x13fd650, L_0x13fd500, C4<1>, C4<1>;
+L_0x13fd7a0 .functor AND 1, L_0x13fd8c0, L_0x13fd700, C4<1>, C4<1>;
+L_0x13fd810 .functor NOT 1, L_0x13fdb30, C4<0>, C4<0>, C4<0>;
+L_0x13fd970 .functor AND 1, L_0x13fd7a0, L_0x13fd810, C4<1>, C4<1>;
+L_0x13fde60 .functor AND 1, L_0x13fd970, L_0x13fddc0, C4<1>, C4<1>;
+L_0x13fdd30 .functor AND 1, L_0x13fde60, L_0x13fdc90, C4<1>, C4<1>;
+L_0x13fe210 .functor NOT 1, L_0x13fe170, C4<0>, C4<0>, C4<0>;
+L_0x13fe000 .functor NOT 1, L_0x13fdf60, C4<0>, C4<0>, C4<0>;
+L_0x13fe0b0 .functor AND 1, L_0x13fe210, L_0x13fe000, C4<1>, C4<1>;
+L_0x13fe360 .functor AND 1, L_0x13fe0b0, L_0x13fe2c0, C4<1>, C4<1>;
+L_0x13fe410 .functor AND 1, L_0x13fe360, L_0x13fe6f0, C4<1>, C4<1>;
+L_0x13fe5e0 .functor AND 1, L_0x13fe410, L_0x13fe540, C4<1>, C4<1>;
+L_0x13fe790 .functor AND 1, L_0x13fe5e0, L_0x13fea90, C4<1>, C4<1>;
+L_0x13fe970 .functor NOT 1, L_0x13fe8d0, C4<0>, C4<0>, C4<0>;
+L_0x13f2c70 .functor NOT 1, L_0x13fee00, C4<0>, C4<0>, C4<0>;
+L_0x13f60c0 .functor AND 1, L_0x13fe970, L_0x13f2c70, C4<1>, C4<1>;
+L_0x13fce60 .functor AND 1, L_0x13f60c0, L_0x13feb30, C4<1>, C4<1>;
+L_0x13fed70 .functor AND 1, L_0x13fce60, L_0x13fecd0, C4<1>, C4<1>;
+L_0x13fcd50 .functor NOT 1, L_0x13ff570, C4<0>, C4<0>, C4<0>;
+L_0x13ff2b0 .functor AND 1, L_0x13fed70, L_0x13fcd50, C4<1>, C4<1>;
+L_0x13ff450 .functor AND 1, L_0x13ff2b0, L_0x13ff3b0, C4<1>, C4<1>;
+L_0x13ff700 .functor NOT 1, L_0x13ff660, C4<0>, C4<0>, C4<0>;
+L_0x13ff7b0 .functor NOT 1, L_0x13ffb00, C4<0>, C4<0>, C4<0>;
+L_0x13ff860 .functor AND 1, L_0x13ff700, L_0x13ff7b0, C4<1>, C4<1>;
+L_0x13ffa00 .functor NOT 1, L_0x13ff960, C4<0>, C4<0>, C4<0>;
+L_0x13ffec0 .functor AND 1, L_0x13ff860, L_0x13ffa00, C4<1>, C4<1>;
+L_0x13ffba0 .functor AND 1, L_0x13ffec0, L_0x13fff70, C4<1>, C4<1>;
+L_0x13ffd40 .functor NOT 1, L_0x13ffca0, C4<0>, C4<0>, C4<0>;
+L_0x13ffdf0 .functor AND 1, L_0x13ffba0, L_0x13ffd40, C4<1>, C4<1>;
+L_0x1400200 .functor AND 1, L_0x13ffdf0, L_0x1400160, C4<1>, C4<1>;
+v0x13e7a10_0 .var "ALUSrc_o", 0 0;
+v0x13e7ae0_0 .var "ALU_op_o", 2 0;
+v0x13e7b90_0 .var "Branch_o", 0 0;
+v0x13e7c10_0 .net "R", 0 0, L_0x13fb830; 1 drivers
+v0x13e7cc0_0 .var "RegDst_o", 0 0;
+v0x13e7d40_0 .var "RegWrite_o", 0 0;
+v0x13e7e20_0 .var "ZeroExt_o", 0 0;
+v0x13e7ea0_0 .net *"_s1", 0 0, L_0x13faae0; 1 drivers
+v0x13e7f70_0 .net *"_s100", 0 0, L_0x13fd650; 1 drivers
+v0x13e8010_0 .net *"_s103", 0 0, L_0x13fd460; 1 drivers
+v0x13e8110_0 .net *"_s104", 0 0, L_0x13fd500; 1 drivers
+v0x13e81b0_0 .net *"_s106", 0 0, L_0x13fd8c0; 1 drivers
+v0x13e82c0_0 .net *"_s109", 0 0, L_0x13fd700; 1 drivers
+v0x13e8360_0 .net *"_s11", 0 0, L_0x13faea0; 1 drivers
+v0x13e8480_0 .net *"_s110", 0 0, L_0x13fd7a0; 1 drivers
+v0x13e8520_0 .net *"_s113", 0 0, L_0x13fdb30; 1 drivers
+v0x13e83e0_0 .net *"_s114", 0 0, L_0x13fd810; 1 drivers
+v0x13e8670_0 .net *"_s116", 0 0, L_0x13fd970; 1 drivers
+v0x13e8790_0 .net *"_s119", 0 0, L_0x13fddc0; 1 drivers
+v0x13e8810_0 .net *"_s12", 0 0, L_0x13faf40; 1 drivers
+v0x13e86f0_0 .net *"_s120", 0 0, L_0x13fde60; 1 drivers
+v0x13e8940_0 .net *"_s123", 0 0, L_0x13fdc90; 1 drivers
+v0x13e8890_0 .net *"_s127", 0 0, L_0x13fe170; 1 drivers
+v0x13e8a80_0 .net *"_s128", 0 0, L_0x13fe210; 1 drivers
+v0x13e89e0_0 .net *"_s131", 0 0, L_0x13fdf60; 1 drivers
+v0x13e8bd0_0 .net *"_s132", 0 0, L_0x13fe000; 1 drivers
+v0x13e8b20_0 .net *"_s134", 0 0, L_0x13fe0b0; 1 drivers
+v0x13e8d30_0 .net *"_s137", 0 0, L_0x13fe2c0; 1 drivers
+v0x13e8c70_0 .net *"_s138", 0 0, L_0x13fe360; 1 drivers
+v0x13e8ea0_0 .net *"_s14", 0 0, L_0x13faff0; 1 drivers
+v0x13e8db0_0 .net *"_s141", 0 0, L_0x13fe6f0; 1 drivers
+v0x13e9020_0 .net *"_s142", 0 0, L_0x13fe410; 1 drivers
+v0x13e8f20_0 .net *"_s145", 0 0, L_0x13fe540; 1 drivers
+v0x13e91b0_0 .net *"_s146", 0 0, L_0x13fe5e0; 1 drivers
+v0x13e90a0_0 .net *"_s149", 0 0, L_0x13fea90; 1 drivers
+v0x13e9350_0 .net *"_s153", 0 0, L_0x13fe8d0; 1 drivers
+v0x13e9230_0 .net *"_s154", 0 0, L_0x13fe970; 1 drivers
+v0x13e92d0_0 .net *"_s157", 0 0, L_0x13fee00; 1 drivers
+v0x13e9510_0 .net *"_s158", 0 0, L_0x13f2c70; 1 drivers
+v0x13e9590_0 .net *"_s160", 0 0, L_0x13f60c0; 1 drivers
+v0x13e93d0_0 .net *"_s163", 0 0, L_0x13feb30; 1 drivers
+v0x13e9470_0 .net *"_s164", 0 0, L_0x13fce60; 1 drivers
+v0x13e9770_0 .net *"_s167", 0 0, L_0x13fecd0; 1 drivers
+v0x13e97f0_0 .net *"_s168", 0 0, L_0x13fed70; 1 drivers
+v0x13e9610_0 .net *"_s17", 0 0, L_0x13fb120; 1 drivers
+v0x13e96b0_0 .net *"_s171", 0 0, L_0x13ff570; 1 drivers
+v0x13e99f0_0 .net *"_s172", 0 0, L_0x13fcd50; 1 drivers
+v0x13e9a70_0 .net *"_s174", 0 0, L_0x13ff2b0; 1 drivers
+v0x13e9890_0 .net *"_s177", 0 0, L_0x13ff3b0; 1 drivers
+v0x13e9930_0 .net *"_s18", 0 0, L_0x13fb250; 1 drivers
+v0x13e9c90_0 .net *"_s181", 0 0, L_0x13ff660; 1 drivers
+v0x13e9d10_0 .net *"_s182", 0 0, L_0x13ff700; 1 drivers
+v0x13e9b10_0 .net *"_s185", 0 0, L_0x13ffb00; 1 drivers
+v0x13e9bb0_0 .net *"_s186", 0 0, L_0x13ff7b0; 1 drivers
+v0x13e9f50_0 .net *"_s188", 0 0, L_0x13ff860; 1 drivers
+v0x13e9fd0_0 .net *"_s191", 0 0, L_0x13ff960; 1 drivers
+v0x13e9d90_0 .net *"_s192", 0 0, L_0x13ffa00; 1 drivers
+v0x13e9e30_0 .net *"_s194", 0 0, L_0x13ffec0; 1 drivers
+v0x13e9ed0_0 .net *"_s197", 0 0, L_0x13fff70; 1 drivers
+v0x13ea250_0 .net *"_s198", 0 0, L_0x13ffba0; 1 drivers
+v0x13ea070_0 .net *"_s2", 0 0, L_0x13f6b10; 1 drivers
+v0x13ea110_0 .net *"_s20", 0 0, L_0x13fb2e0; 1 drivers
+v0x13ea1b0_0 .net *"_s201", 0 0, L_0x13ffca0; 1 drivers
+v0x13ea4f0_0 .net *"_s202", 0 0, L_0x13ffd40; 1 drivers
+v0x13ea2f0_0 .net *"_s204", 0 0, L_0x13ffdf0; 1 drivers
+v0x13ea390_0 .net *"_s207", 0 0, L_0x1400160; 1 drivers
+v0x13ea430_0 .net *"_s23", 0 0, L_0x13fb3e0; 1 drivers
+v0x13ea790_0 .net *"_s24", 0 0, L_0x13fb480; 1 drivers
+v0x13ea590_0 .net *"_s26", 0 0, L_0x13fb580; 1 drivers
+v0x13ea630_0 .net *"_s29", 0 0, L_0x13fb680; 1 drivers
+v0x13ea6d0_0 .net *"_s30", 0 0, L_0x13fb720; 1 drivers
+v0x13eaa50_0 .net *"_s35", 0 0, L_0x13fb8e0; 1 drivers
+v0x13ea810_0 .net *"_s36", 0 0, L_0x13fb980; 1 drivers
+v0x13ea8b0_0 .net *"_s39", 0 0, L_0x13fba30; 1 drivers
+v0x13ea950_0 .net *"_s40", 0 0, L_0x13fb7d0; 1 drivers
+v0x13ead30_0 .net *"_s42", 0 0, L_0x13fbc30; 1 drivers
+v0x13eaad0_0 .net *"_s45", 0 0, L_0x13fbd30; 1 drivers
+v0x13eab70_0 .net *"_s46", 0 0, L_0x13fbdd0; 1 drivers
+v0x13eac10_0 .net *"_s48", 0 0, L_0x13fbe80; 1 drivers
+v0x13eacb0_0 .net *"_s5", 0 0, L_0x13fac00; 1 drivers
+v0x13eb040_0 .net *"_s51", 0 0, L_0x13fc010; 1 drivers
+v0x13eb0c0_0 .net *"_s52", 0 0, L_0x13fc0b0; 1 drivers
+v0x13eadd0_0 .net *"_s55", 0 0, L_0x13fc1b0; 1 drivers
+v0x13eae70_0 .net *"_s56", 0 0, L_0x13fc250; 1 drivers
+v0x13eaf10_0 .net *"_s58", 0 0, L_0x13fbf80; 1 drivers
+v0x13eafb0_0 .net *"_s6", 0 0, L_0x13facf0; 1 drivers
+v0x13eb420_0 .net *"_s61", 0 0, L_0x13fc440; 1 drivers
+v0x13eb4c0_0 .net *"_s62", 0 0, L_0x13fb1c0; 1 drivers
+v0x13eb160_0 .net *"_s67", 0 0, L_0x13fc680; 1 drivers
+v0x13eb200_0 .net *"_s68", 0 0, L_0x13fc720; 1 drivers
+v0x13eb2a0_0 .net *"_s71", 0 0, L_0x13fc530; 1 drivers
+v0x13eb340_0 .net *"_s72", 0 0, L_0x13fc890; 1 drivers
+v0x13eb830_0 .net *"_s74", 0 0, L_0x13fc940; 1 drivers
+v0x13eb8b0_0 .net *"_s77", 0 0, L_0x13fc7d0; 1 drivers
+v0x13eb560_0 .net *"_s78", 0 0, L_0x13fcb10; 1 drivers
+v0x13eb600_0 .net *"_s8", 0 0, L_0x13fada0; 1 drivers
+v0x13eb6a0_0 .net *"_s81", 0 0, L_0x13fcc10; 1 drivers
+v0x13eb740_0 .net *"_s82", 0 0, L_0x13fbb60; 1 drivers
+v0x13ebc50_0 .net *"_s84", 0 0, L_0x13fca40; 1 drivers
+v0x13ebcd0_0 .net *"_s87", 0 0, L_0x13fd040; 1 drivers
+v0x13eb930_0 .net *"_s88", 0 0, L_0x13fd0e0; 1 drivers
+v0x13eb9d0_0 .net *"_s90", 0 0, L_0x13fcf10; 1 drivers
+v0x13eba70_0 .net *"_s93", 0 0, L_0x13fd2d0; 1 drivers
+v0x13ebb10_0 .net *"_s94", 0 0, L_0x13fbad0; 1 drivers
+v0x13ebbb0_0 .net *"_s99", 0 0, L_0x13fd5b0; 1 drivers
+v0x13ec0a0_0 .net "addi", 0 0, L_0x13fd190; 1 drivers
+v0x13ebd70_0 .net "beq", 0 0, L_0x13fc300; 1 drivers
+v0x13ebe10_0 .net "bne", 0 0, L_0x1400200; 1 drivers
+v0x13ebeb0_0 .net "instr_op_i", 5 0, L_0x1400010; 1 drivers
+v0x13ebf50_0 .net "lui", 0 0, L_0x13fe790; 1 drivers
+v0x13ebff0_0 .net "ori", 0 0, L_0x13ff450; 1 drivers
+v0x13ec4a0_0 .net "sltiu", 0 0, L_0x13fdd30; 1 drivers
+E_0x13e79a0/0 .event edge, v0x13ebf50_0, v0x13ebff0_0, v0x13ebe10_0, v0x13ec0a0_0;
+E_0x13e79a0/1 .event edge, v0x13ec4a0_0, v0x13ebd70_0, v0x13e7c10_0;
+E_0x13e79a0 .event/or E_0x13e79a0/0, E_0x13e79a0/1;
+L_0x13faae0 .part L_0x1400010, 5, 1;
+L_0x13fac00 .part L_0x1400010, 4, 1;
+L_0x13faea0 .part L_0x1400010, 3, 1;
+L_0x13fb120 .part L_0x1400010, 2, 1;
+L_0x13fb3e0 .part L_0x1400010, 1, 1;
+L_0x13fb680 .part L_0x1400010, 0, 1;
+L_0x13fb8e0 .part L_0x1400010, 5, 1;
+L_0x13fba30 .part L_0x1400010, 4, 1;
+L_0x13fbd30 .part L_0x1400010, 3, 1;
+L_0x13fc010 .part L_0x1400010, 2, 1;
+L_0x13fc1b0 .part L_0x1400010, 1, 1;
+L_0x13fc440 .part L_0x1400010, 0, 1;
+L_0x13fc680 .part L_0x1400010, 5, 1;
+L_0x13fc530 .part L_0x1400010, 4, 1;
+L_0x13fc7d0 .part L_0x1400010, 3, 1;
+L_0x13fcc10 .part L_0x1400010, 2, 1;
+L_0x13fd040 .part L_0x1400010, 1, 1;
+L_0x13fd2d0 .part L_0x1400010, 0, 1;
+L_0x13fd5b0 .part L_0x1400010, 5, 1;
+L_0x13fd460 .part L_0x1400010, 4, 1;
+L_0x13fd700 .part L_0x1400010, 3, 1;
+L_0x13fdb30 .part L_0x1400010, 2, 1;
+L_0x13fddc0 .part L_0x1400010, 1, 1;
+L_0x13fdc90 .part L_0x1400010, 0, 1;
+L_0x13fe170 .part L_0x1400010, 5, 1;
+L_0x13fdf60 .part L_0x1400010, 4, 1;
+L_0x13fe2c0 .part L_0x1400010, 3, 1;
+L_0x13fe6f0 .part L_0x1400010, 2, 1;
+L_0x13fe540 .part L_0x1400010, 1, 1;
+L_0x13fea90 .part L_0x1400010, 0, 1;
+L_0x13fe8d0 .part L_0x1400010, 5, 1;
+L_0x13fee00 .part L_0x1400010, 4, 1;
+L_0x13feb30 .part L_0x1400010, 3, 1;
+L_0x13fecd0 .part L_0x1400010, 2, 1;
+L_0x13ff570 .part L_0x1400010, 1, 1;
+L_0x13ff3b0 .part L_0x1400010, 0, 1;
+L_0x13ff660 .part L_0x1400010, 5, 1;
+L_0x13ffb00 .part L_0x1400010, 4, 1;
+L_0x13ff960 .part L_0x1400010, 3, 1;
+L_0x13fff70 .part L_0x1400010, 2, 1;
+L_0x13ffca0 .part L_0x1400010, 1, 1;
+L_0x1400160 .part L_0x1400010, 0, 1;
+S_0x13e74e0 .scope module, "AC" "ALU_Ctrl" 3 106, 11 12, S_0x1390690;
+ .timescale 0 0;
+v0x13e7600_0 .var "ALUCtrl_o", 3 0;
+v0x13e76d0_0 .alias "ALUOp_i", 2 0, v0x13f23c0_0;
+v0x13e7750_0 .var "ALUSrc2_o", 0 0;
+v0x13e7800_0 .net "funct_i", 5 0, L_0x14000b0; 1 drivers
+E_0x13e75d0 .event edge, v0x13e76d0_0, v0x13e7800_0;
+S_0x13e7130 .scope module, "SE" "Sign_Extend" 3 113, 12 12, S_0x1390690;
+ .timescale 0 0;
+v0x13e7220_0 .net *"_s1", 0 0, L_0x1400700; 1 drivers
+v0x13e72c0_0 .net *"_s2", 15 0, L_0x14007a0; 1 drivers
+v0x13e7360_0 .net "data_i", 15 0, L_0x14009c0; 1 drivers
+v0x13e7400_0 .alias "data_o", 31 0, v0x13f2d30_0;
+L_0x1400700 .part L_0x14009c0, 15, 1;
+LS_0x14007a0_0_0 .concat [ 1 1 1 1], L_0x1400700, L_0x1400700, L_0x1400700, L_0x1400700;
+LS_0x14007a0_0_4 .concat [ 1 1 1 1], L_0x1400700, L_0x1400700, L_0x1400700, L_0x1400700;
+LS_0x14007a0_0_8 .concat [ 1 1 1 1], L_0x1400700, L_0x1400700, L_0x1400700, L_0x1400700;
+LS_0x14007a0_0_12 .concat [ 1 1 1 1], L_0x1400700, L_0x1400700, L_0x1400700, L_0x1400700;
+L_0x14007a0 .concat [ 4 4 4 4], LS_0x14007a0_0_0, LS_0x14007a0_0_4, LS_0x14007a0_0_8, LS_0x14007a0_0_12;
+L_0x14008d0 .concat [ 16 16 0 0], L_0x14009c0, L_0x14007a0;
+S_0x13e6e30 .scope module, "ZE" "Zero_Extend" 3 118, 13 12, S_0x1390690;
+ .timescale 0 0;
+v0x13e6f20_0 .net *"_s0", 15 0, C4<0000000000000000>; 1 drivers
+v0x13e6fe0_0 .net "data_i", 15 0, L_0x1400e30; 1 drivers
+v0x13e7080_0 .alias "data_o", 31 0, v0x13f2e00_0;
+L_0x1400d90 .concat [ 16 16 0 0], L_0x1400e30, C4<0000000000000000>;
+S_0x13e69f0 .scope module, "Mux_Extend" "MUX_2to1" 3 123, 8 12, S_0x1390690;
+ .timescale 0 0;
+P_0x13e6ae8 .param/l "size" 8 19, +C4<0100000>;
+v0x13e6bd0_0 .alias "data0_i", 31 0, v0x13f2d30_0;
+v0x13e6c90_0 .alias "data1_i", 31 0, v0x13f2e00_0;
+v0x13e6d30_0 .var "data_o", 31 0;
+v0x13e6db0_0 .alias "select_i", 0 0, v0x13f2630_0;
+E_0x13e6b60 .event edge, v0x13e6db0_0, v0x13e6c90_0, v0x13e6bd0_0;
+S_0x13e6570 .scope module, "Mux_ALUSrc2" "MUX_2to1" 3 130, 8 12, S_0x1390690;
+ .timescale 0 0;
+P_0x13e6668 .param/l "size" 8 19, +C4<0100000>;
+v0x13e6730_0 .alias "data0_i", 31 0, v0x13f2700_0;
+v0x13e67f0_0 .net "data1_i", 31 0, L_0x1401010; 1 drivers
+v0x13e6890_0 .var "data_o", 31 0;
+v0x13e6940_0 .alias "select_i", 0 0, v0x13f2560_0;
+E_0x13e66e0 .event edge, v0x13e6940_0, v0x13e67f0_0, v0x13e6730_0;
+S_0x13e60d0 .scope module, "Mux_ALUSrc" "MUX_2to1" 3 137, 8 12, S_0x1390690;
+ .timescale 0 0;
+P_0x13e61c8 .param/l "size" 8 19, +C4<0100000>;
+v0x13e62a0_0 .alias "data0_i", 31 0, v0x13f27d0_0;
+v0x13e6360_0 .alias "data1_i", 31 0, v0x13f32d0_0;
+v0x13e6410_0 .var "data_o", 31 0;
+v0x13e64c0_0 .alias "select_i", 0 0, v0x13f2490_0;
+E_0x13e5f60 .event edge, v0x13e64c0_0, v0x13e10b0_0, v0x13e62a0_0;
+S_0x13e5c00 .scope module, "ALU" "ALU" 3 144, 14 12, S_0x1390690;
+ .timescale 0 0;
+v0x13e5d20_0 .alias "ctrl_i", 3 0, v0x13f22f0_0;
+v0x13e5da0_0 .var "result_o", 31 0;
+v0x13e5e40_0 .var "set", 0 0;
+v0x13e5ee0_0 .alias "src1_i", 31 0, v0x13f2b70_0;
+v0x13e5f90_0 .alias "src2_i", 31 0, v0x13f2bf0_0;
+v0x13e6030_0 .alias "zero_o", 0 0, v0x13f37b0_0;
+E_0x13e5cf0 .event edge, v0x13e5d20_0, v0x13e5f90_0, v0x13e5ee0_0;
+S_0x13e1200 .scope module, "Adder2" "Adder" 3 152, 5 12, S_0x1390690;
+ .timescale 0 0;
+RS_0x7f02362f0218/0/0 .resolv tri, L_0x1401c40, L_0x1402920, L_0x1403640, L_0x1404340;
+RS_0x7f02362f0218/0/4 .resolv tri, L_0x14051b0, L_0x1405db0, L_0x1406d10, L_0x1407820;
+RS_0x7f02362f0218 .resolv tri, RS_0x7f02362f0218/0/0, RS_0x7f02362f0218/0/4, C4<zzzzzzzz>, C4<zzzzzzzz>;
+v0x13e5930_0 .net8 "c", 7 0, RS_0x7f02362f0218; 8 drivers
+v0x13e59f0_0 .alias "src1_i", 31 0, v0x13f2e80_0;
+v0x13e5a70_0 .alias "src2_i", 31 0, v0x13f3510_0;
+v0x13e5b20_0 .alias "sum_o", 31 0, v0x13f3050_0;
+L_0x1401a60 .part RS_0x7f02362ef018, 0, 4;
+L_0x1401b00 .part L_0x1407c00, 0, 4;
+RS_0x7f02362f01e8 .resolv tri, L_0x1401210, L_0x14013a0, L_0x14015d0, L_0x1401760;
+L_0x1401ba0 .part/pv RS_0x7f02362f01e8, 0, 4, 32;
+L_0x1401c40 .part/pv L_0x14019c0, 0, 1, 8;
+L_0x1402580 .part RS_0x7f02362ef018, 4, 4;
+L_0x1402620 .part L_0x1407c00, 4, 4;
+L_0x1402750 .part RS_0x7f02362f0218, 0, 1;
+RS_0x7f02362effd8 .resolv tri, L_0x1401d30, L_0x1401ec0, L_0x14020f0, L_0x1402280;
+L_0x14027f0 .part/pv RS_0x7f02362effd8, 4, 4, 32;
+L_0x1402920 .part/pv L_0x14024e0, 1, 1, 8;
+L_0x1403260 .part RS_0x7f02362ef018, 8, 4;
+L_0x1403360 .part L_0x1407c00, 8, 4;
+L_0x1403400 .part RS_0x7f02362f0218, 1, 1;
+RS_0x7f02362efdc8 .resolv tri, L_0x1402a10, L_0x1402ba0, L_0x1402dd0, L_0x1402f60;
+L_0x14035a0 .part/pv RS_0x7f02362efdc8, 8, 4, 32;
+L_0x1403640 .part/pv L_0x14031c0, 2, 1, 8;
+L_0x1403f60 .part RS_0x7f02362ef018, 12, 4;
+L_0x1404000 .part L_0x1407c00, 12, 4;
+L_0x1404130 .part RS_0x7f02362f0218, 2, 1;
+RS_0x7f02362efbb8 .resolv tri, L_0x1403760, L_0x14038a0, L_0x1403ad0, L_0x1403c60;
+L_0x1404200 .part/pv RS_0x7f02362efbb8, 12, 4, 32;
+L_0x1404340 .part/pv L_0x1403ec0, 3, 1, 8;
+L_0x1404c60 .part RS_0x7f02362ef018, 16, 4;
+L_0x14042a0 .part L_0x1407c00, 16, 4;
+L_0x1404f40 .part RS_0x7f02362f0218, 3, 1;
+RS_0x7f02362ef9a8 .resolv tri, L_0x14043e0, L_0x14045a0, L_0x14047d0, L_0x1404960;
+L_0x13f7b90 .part/pv RS_0x7f02362ef9a8, 16, 4, 32;
+L_0x14051b0 .part/pv L_0x1404bc0, 4, 1, 8;
+L_0x1405b00 .part RS_0x7f02362ef018, 20, 4;
+L_0x1405bd0 .part L_0x1407c00, 20, 4;
+L_0x1405250 .part RS_0x7f02362f0218, 4, 1;
+RS_0x7f02362ef798 .resolv tri, L_0x14050f0, L_0x1405440, L_0x1405670, L_0x1405800;
+L_0x1405e90 .part/pv RS_0x7f02362ef798, 20, 4, 32;
+L_0x1405db0 .part/pv L_0x1405a60, 5, 1, 8;
+L_0x1406960 .part RS_0x7f02362ef018, 24, 4;
+L_0x1406040 .part L_0x1407c00, 24, 4;
+L_0x1406b30 .part RS_0x7f02362f0218, 5, 1;
+RS_0x7f02362ef588 .resolv tri, L_0x1406130, L_0x1406270, L_0x14064a0, L_0x1406630;
+L_0x1406a30 .part/pv RS_0x7f02362ef588, 24, 4, 32;
+L_0x1406d10 .part/pv L_0x1406890, 6, 1, 8;
+L_0x1407680 .part RS_0x7f02362ef018, 28, 4;
+L_0x1407750 .part L_0x1407c00, 28, 4;
+L_0x1406db0 .part RS_0x7f02362f0218, 6, 1;
+RS_0x7f02362ef378 .resolv tri, L_0x1406c00, L_0x1406fc0, L_0x14071f0, L_0x1407380;
+L_0x1407950 .part/pv RS_0x7f02362ef378, 28, 4, 32;
+L_0x1407820 .part/pv L_0x14075e0, 7, 1, 8;
+S_0x13e5080 .scope module, "a1" "Adder_4bit" 5 30, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e51c0_0 .net *"_s11", 0 0, L_0x1401670; 1 drivers
+v0x13e5280_0 .net *"_s15", 0 0, L_0x1401890; 1 drivers
+v0x13e5320_0 .net *"_s3", 0 0, L_0x14012b0; 1 drivers
+v0x13e53c0_0 .net *"_s7", 0 0, L_0x1401490; 1 drivers
+v0x13e5470_0 .var "c", 3 0;
+v0x13e5510_0 .net "cin_i", 0 0, C4<0>; 1 drivers
+v0x13e55b0_0 .net "cout_o", 0 0, L_0x14019c0; 1 drivers
+v0x13e5650_0 .net "src1_i", 3 0, L_0x1401a60; 1 drivers
+v0x13e56f0_0 .net "src2_i", 3 0, L_0x1401b00; 1 drivers
+v0x13e5790_0 .var "sum", 3 0;
+v0x13e5890_0 .net8 "sum_o", 3 0, RS_0x7f02362f01e8; 4 drivers
+E_0x13e4b90 .event edge, v0x13e5650_0, v0x13e56f0_0, v0x13e5510_0, v0x13e5470_0;
+L_0x1401210 .part/pv L_0x14012b0, 0, 1, 4;
+L_0x14012b0 .part v0x13e5790_0, 0, 1;
+L_0x14013a0 .part/pv L_0x1401490, 1, 1, 4;
+L_0x1401490 .part v0x13e5790_0, 1, 1;
+L_0x14015d0 .part/pv L_0x1401670, 2, 1, 4;
+L_0x1401670 .part v0x13e5790_0, 2, 1;
+L_0x1401760 .part/pv L_0x1401890, 3, 1, 4;
+L_0x1401890 .part v0x13e5790_0, 3, 1;
+L_0x14019c0 .part v0x13e5470_0, 3, 1;
+S_0x13e47d0 .scope module, "a2" "Adder_4bit" 5 31, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e4910_0 .net *"_s11", 0 0, L_0x1402190; 1 drivers
+v0x13e49d0_0 .net *"_s15", 0 0, L_0x14023b0; 1 drivers
+v0x13e4a70_0 .net *"_s3", 0 0, L_0x1401dd0; 1 drivers
+v0x13e4b10_0 .net *"_s7", 0 0, L_0x1401fb0; 1 drivers
+v0x13e4bc0_0 .var "c", 3 0;
+v0x13e4c60_0 .net "cin_i", 0 0, L_0x1402750; 1 drivers
+v0x13e4d00_0 .net "cout_o", 0 0, L_0x14024e0; 1 drivers
+v0x13e4da0_0 .net "src1_i", 3 0, L_0x1402580; 1 drivers
+v0x13e4e40_0 .net "src2_i", 3 0, L_0x1402620; 1 drivers
+v0x13e4ee0_0 .var "sum", 3 0;
+v0x13e4fe0_0 .net8 "sum_o", 3 0, RS_0x7f02362effd8; 4 drivers
+E_0x13e42e0 .event edge, v0x13e4da0_0, v0x13e4e40_0, v0x13e4c60_0, v0x13e4bc0_0;
+L_0x1401d30 .part/pv L_0x1401dd0, 0, 1, 4;
+L_0x1401dd0 .part v0x13e4ee0_0, 0, 1;
+L_0x1401ec0 .part/pv L_0x1401fb0, 1, 1, 4;
+L_0x1401fb0 .part v0x13e4ee0_0, 1, 1;
+L_0x14020f0 .part/pv L_0x1402190, 2, 1, 4;
+L_0x1402190 .part v0x13e4ee0_0, 2, 1;
+L_0x1402280 .part/pv L_0x14023b0, 3, 1, 4;
+L_0x14023b0 .part v0x13e4ee0_0, 3, 1;
+L_0x14024e0 .part v0x13e4bc0_0, 3, 1;
+S_0x13e3f20 .scope module, "a3" "Adder_4bit" 5 32, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e4060_0 .net *"_s11", 0 0, L_0x1402e70; 1 drivers
+v0x13e4120_0 .net *"_s15", 0 0, L_0x1403090; 1 drivers
+v0x13e41c0_0 .net *"_s3", 0 0, L_0x1402ab0; 1 drivers
+v0x13e4260_0 .net *"_s7", 0 0, L_0x1402c90; 1 drivers
+v0x13e4310_0 .var "c", 3 0;
+v0x13e43b0_0 .net "cin_i", 0 0, L_0x1403400; 1 drivers
+v0x13e4450_0 .net "cout_o", 0 0, L_0x14031c0; 1 drivers
+v0x13e44f0_0 .net "src1_i", 3 0, L_0x1403260; 1 drivers
+v0x13e4590_0 .net "src2_i", 3 0, L_0x1403360; 1 drivers
+v0x13e4630_0 .var "sum", 3 0;
+v0x13e4730_0 .net8 "sum_o", 3 0, RS_0x7f02362efdc8; 4 drivers
+E_0x13e3a30 .event edge, v0x13e44f0_0, v0x13e4590_0, v0x13e43b0_0, v0x13e4310_0;
+L_0x1402a10 .part/pv L_0x1402ab0, 0, 1, 4;
+L_0x1402ab0 .part v0x13e4630_0, 0, 1;
+L_0x1402ba0 .part/pv L_0x1402c90, 1, 1, 4;
+L_0x1402c90 .part v0x13e4630_0, 1, 1;
+L_0x1402dd0 .part/pv L_0x1402e70, 2, 1, 4;
+L_0x1402e70 .part v0x13e4630_0, 2, 1;
+L_0x1402f60 .part/pv L_0x1403090, 3, 1, 4;
+L_0x1403090 .part v0x13e4630_0, 3, 1;
+L_0x14031c0 .part v0x13e4310_0, 3, 1;
+S_0x13e3670 .scope module, "a4" "Adder_4bit" 5 33, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e37b0_0 .net *"_s11", 0 0, L_0x1403b70; 1 drivers
+v0x13e3870_0 .net *"_s15", 0 0, L_0x1403d90; 1 drivers
+v0x13e3910_0 .net *"_s3", 0 0, L_0x1403800; 1 drivers
+v0x13e39b0_0 .net *"_s7", 0 0, L_0x1403990; 1 drivers
+v0x13e3a60_0 .var "c", 3 0;
+v0x13e3b00_0 .net "cin_i", 0 0, L_0x1404130; 1 drivers
+v0x13e3ba0_0 .net "cout_o", 0 0, L_0x1403ec0; 1 drivers
+v0x13e3c40_0 .net "src1_i", 3 0, L_0x1403f60; 1 drivers
+v0x13e3ce0_0 .net "src2_i", 3 0, L_0x1404000; 1 drivers
+v0x13e3d80_0 .var "sum", 3 0;
+v0x13e3e80_0 .net8 "sum_o", 3 0, RS_0x7f02362efbb8; 4 drivers
+E_0x13e3180 .event edge, v0x13e3c40_0, v0x13e3ce0_0, v0x13e3b00_0, v0x13e3a60_0;
+L_0x1403760 .part/pv L_0x1403800, 0, 1, 4;
+L_0x1403800 .part v0x13e3d80_0, 0, 1;
+L_0x14038a0 .part/pv L_0x1403990, 1, 1, 4;
+L_0x1403990 .part v0x13e3d80_0, 1, 1;
+L_0x1403ad0 .part/pv L_0x1403b70, 2, 1, 4;
+L_0x1403b70 .part v0x13e3d80_0, 2, 1;
+L_0x1403c60 .part/pv L_0x1403d90, 3, 1, 4;
+L_0x1403d90 .part v0x13e3d80_0, 3, 1;
+L_0x1403ec0 .part v0x13e3a60_0, 3, 1;
+S_0x13e2dc0 .scope module, "a5" "Adder_4bit" 5 34, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e2f00_0 .net *"_s11", 0 0, L_0x1404870; 1 drivers
+v0x13e2fc0_0 .net *"_s15", 0 0, L_0x1404a90; 1 drivers
+v0x13e3060_0 .net *"_s3", 0 0, L_0x1404480; 1 drivers
+v0x13e3100_0 .net *"_s7", 0 0, L_0x1404690; 1 drivers
+v0x13e31b0_0 .var "c", 3 0;
+v0x13e3250_0 .net "cin_i", 0 0, L_0x1404f40; 1 drivers
+v0x13e32f0_0 .net "cout_o", 0 0, L_0x1404bc0; 1 drivers
+v0x13e3390_0 .net "src1_i", 3 0, L_0x1404c60; 1 drivers
+v0x13e3430_0 .net "src2_i", 3 0, L_0x14042a0; 1 drivers
+v0x13e34d0_0 .var "sum", 3 0;
+v0x13e35d0_0 .net8 "sum_o", 3 0, RS_0x7f02362ef9a8; 4 drivers
+E_0x13e28d0 .event edge, v0x13e3390_0, v0x13e3430_0, v0x13e3250_0, v0x13e31b0_0;
+L_0x14043e0 .part/pv L_0x1404480, 0, 1, 4;
+L_0x1404480 .part v0x13e34d0_0, 0, 1;
+L_0x14045a0 .part/pv L_0x1404690, 1, 1, 4;
+L_0x1404690 .part v0x13e34d0_0, 1, 1;
+L_0x14047d0 .part/pv L_0x1404870, 2, 1, 4;
+L_0x1404870 .part v0x13e34d0_0, 2, 1;
+L_0x1404960 .part/pv L_0x1404a90, 3, 1, 4;
+L_0x1404a90 .part v0x13e34d0_0, 3, 1;
+L_0x1404bc0 .part v0x13e31b0_0, 3, 1;
+S_0x13e2510 .scope module, "a6" "Adder_4bit" 5 35, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e2650_0 .net *"_s11", 0 0, L_0x1405710; 1 drivers
+v0x13e2710_0 .net *"_s15", 0 0, L_0x1405930; 1 drivers
+v0x13e27b0_0 .net *"_s3", 0 0, L_0x1405320; 1 drivers
+v0x13e2850_0 .net *"_s7", 0 0, L_0x1405530; 1 drivers
+v0x13e2900_0 .var "c", 3 0;
+v0x13e29a0_0 .net "cin_i", 0 0, L_0x1405250; 1 drivers
+v0x13e2a40_0 .net "cout_o", 0 0, L_0x1405a60; 1 drivers
+v0x13e2ae0_0 .net "src1_i", 3 0, L_0x1405b00; 1 drivers
+v0x13e2b80_0 .net "src2_i", 3 0, L_0x1405bd0; 1 drivers
+v0x13e2c20_0 .var "sum", 3 0;
+v0x13e2d20_0 .net8 "sum_o", 3 0, RS_0x7f02362ef798; 4 drivers
+E_0x13e2020 .event edge, v0x13e2ae0_0, v0x13e2b80_0, v0x13e29a0_0, v0x13e2900_0;
+L_0x14050f0 .part/pv L_0x1405320, 0, 1, 4;
+L_0x1405320 .part v0x13e2c20_0, 0, 1;
+L_0x1405440 .part/pv L_0x1405530, 1, 1, 4;
+L_0x1405530 .part v0x13e2c20_0, 1, 1;
+L_0x1405670 .part/pv L_0x1405710, 2, 1, 4;
+L_0x1405710 .part v0x13e2c20_0, 2, 1;
+L_0x1405800 .part/pv L_0x1405930, 3, 1, 4;
+L_0x1405930 .part v0x13e2c20_0, 3, 1;
+L_0x1405a60 .part v0x13e2900_0, 3, 1;
+S_0x13e1c60 .scope module, "a7" "Adder_4bit" 5 36, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e1da0_0 .net *"_s11", 0 0, L_0x1406540; 1 drivers
+v0x13e1e60_0 .net *"_s15", 0 0, L_0x1406760; 1 drivers
+v0x13e1f00_0 .net *"_s3", 0 0, L_0x14061d0; 1 drivers
+v0x13e1fa0_0 .net *"_s7", 0 0, L_0x1406360; 1 drivers
+v0x13e2050_0 .var "c", 3 0;
+v0x13e20f0_0 .net "cin_i", 0 0, L_0x1406b30; 1 drivers
+v0x13e2190_0 .net "cout_o", 0 0, L_0x1406890; 1 drivers
+v0x13e2230_0 .net "src1_i", 3 0, L_0x1406960; 1 drivers
+v0x13e22d0_0 .net "src2_i", 3 0, L_0x1406040; 1 drivers
+v0x13e2370_0 .var "sum", 3 0;
+v0x13e2470_0 .net8 "sum_o", 3 0, RS_0x7f02362ef588; 4 drivers
+E_0x13e16e0 .event edge, v0x13e2230_0, v0x13e22d0_0, v0x13e20f0_0, v0x13e2050_0;
+L_0x1406130 .part/pv L_0x14061d0, 0, 1, 4;
+L_0x14061d0 .part v0x13e2370_0, 0, 1;
+L_0x1406270 .part/pv L_0x1406360, 1, 1, 4;
+L_0x1406360 .part v0x13e2370_0, 1, 1;
+L_0x14064a0 .part/pv L_0x1406540, 2, 1, 4;
+L_0x1406540 .part v0x13e2370_0, 2, 1;
+L_0x1406630 .part/pv L_0x1406760, 3, 1, 4;
+L_0x1406760 .part v0x13e2370_0, 3, 1;
+L_0x1406890 .part v0x13e2050_0, 3, 1;
+S_0x13e12f0 .scope module, "a8" "Adder_4bit" 5 37, 6 12, S_0x13e1200;
+ .timescale 0 0;
+v0x13e1460_0 .net *"_s11", 0 0, L_0x1407290; 1 drivers
+v0x13e1520_0 .net *"_s15", 0 0, L_0x14074b0; 1 drivers
+v0x13e15c0_0 .net *"_s3", 0 0, L_0x1406ed0; 1 drivers
+v0x13e1660_0 .net *"_s7", 0 0, L_0x14070b0; 1 drivers
+v0x13e1710_0 .var "c", 3 0;
+v0x13e17b0_0 .net "cin_i", 0 0, L_0x1406db0; 1 drivers
+v0x13e1890_0 .net "cout_o", 0 0, L_0x14075e0; 1 drivers
+v0x13e1930_0 .net "src1_i", 3 0, L_0x1407680; 1 drivers
+v0x13e1a20_0 .net "src2_i", 3 0, L_0x1407750; 1 drivers
+v0x13e1ac0_0 .var "sum", 3 0;
+v0x13e1bc0_0 .net8 "sum_o", 3 0, RS_0x7f02362ef378; 4 drivers
+E_0x13e13e0 .event edge, v0x13e1930_0, v0x13e1a20_0, v0x13e17b0_0, v0x13e1710_0;
+L_0x1406c00 .part/pv L_0x1406ed0, 0, 1, 4;
+L_0x1406ed0 .part v0x13e1ac0_0, 0, 1;
+L_0x1406fc0 .part/pv L_0x14070b0, 1, 1, 4;
+L_0x14070b0 .part v0x13e1ac0_0, 1, 1;
+L_0x14071f0 .part/pv L_0x1407290, 2, 1, 4;
+L_0x1407290 .part v0x13e1ac0_0, 2, 1;
+L_0x1407380 .part/pv L_0x14074b0, 3, 1, 4;
+L_0x14074b0 .part v0x13e1ac0_0, 3, 1;
+L_0x14075e0 .part v0x13e1710_0, 3, 1;
+S_0x13e0e60 .scope module, "Shifter" "Shift_Left_Two_32" 3 158, 15 8, S_0x1390690;
+ .timescale 0 0;
+v0x13e0f50_0 .net *"_s1", 29 0, L_0x1407b30; 1 drivers
+v0x13e1010_0 .net *"_s2", 1 0, C4<00>; 1 drivers
+v0x13e10b0_0 .alias "data_i", 31 0, v0x13f32d0_0;
+v0x13e1150_0 .alias "data_o", 31 0, v0x13f3510_0;
+L_0x1407b30 .part v0x13e6d30_0, 0, 30;
+L_0x1407c00 .concat [ 2 30 0 0], C4<00>, L_0x1407b30;
+S_0x1396380 .scope module, "Mux_PC_Source" "MUX_2to1" 3 163, 8 12, S_0x1390690;
+ .timescale 0 0;
+P_0x1356848 .param/l "size" 8 19, +C4<0100000>;
+v0x13cc7f0_0 .alias "data0_i", 31 0, v0x13f2e80_0;
+v0x13e0c70_0 .alias "data1_i", 31 0, v0x13f3050_0;
+v0x13e0d10_0 .var "data_o", 31 0;
+v0x13e0db0_0 .net "select_i", 0 0, L_0x1403300; 1 drivers
+E_0x1385040 .event edge, v0x13e0db0_0, v0x13e0c70_0, v0x13cc7f0_0;
+    .scope S_0x13f1f10;
+T_0 ;
+    %wait E_0x13e5440;
+    %load/v 8, v0x13f2240_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13f2170_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x13f20f0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13f2170_0, 0, 8;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x13f13f0;
+T_1 ;
+    %wait E_0x13f0f00;
+    %load/v 8, v0x13f19c0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13f1a60_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f1880_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f1b00_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f17e0_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.0, 4;
+    %load/x1p 10, v0x13f19c0_0, 1;
+    %jmp T_1.1;
+T_1.0 ;
+    %mov 10, 2, 1;
+T_1.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.2, 4;
+    %load/x1p 12, v0x13f1a60_0, 1;
+    %jmp T_1.3;
+T_1.2 ;
+    %mov 12, 2, 1;
+T_1.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f17e0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f1b00_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f17e0_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.4, 4;
+    %load/x1p 10, v0x13f19c0_0, 1;
+    %jmp T_1.5;
+T_1.4 ;
+    %mov 10, 2, 1;
+T_1.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.6, 4;
+    %load/x1p 12, v0x13f1a60_0, 1;
+    %jmp T_1.7;
+T_1.6 ;
+    %mov 12, 2, 1;
+T_1.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.8, 4;
+    %load/x1p 12, v0x13f17e0_0, 1;
+    %jmp T_1.9;
+T_1.8 ;
+    %mov 12, 2, 1;
+T_1.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f1b00_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f17e0_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.10, 4;
+    %load/x1p 10, v0x13f19c0_0, 1;
+    %jmp T_1.11;
+T_1.10 ;
+    %mov 10, 2, 1;
+T_1.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.12, 4;
+    %load/x1p 12, v0x13f1a60_0, 1;
+    %jmp T_1.13;
+T_1.12 ;
+    %mov 12, 2, 1;
+T_1.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.14, 4;
+    %load/x1p 12, v0x13f17e0_0, 1;
+    %jmp T_1.15;
+T_1.14 ;
+    %mov 12, 2, 1;
+T_1.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f1b00_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f17e0_0, 9, 1;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_0x13f0b40;
+T_2 ;
+    %wait E_0x13f0650;
+    %load/v 8, v0x13f1110_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13f11b0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f0fd0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f1250_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f0f30_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.0, 4;
+    %load/x1p 10, v0x13f1110_0, 1;
+    %jmp T_2.1;
+T_2.0 ;
+    %mov 10, 2, 1;
+T_2.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.2, 4;
+    %load/x1p 12, v0x13f11b0_0, 1;
+    %jmp T_2.3;
+T_2.2 ;
+    %mov 12, 2, 1;
+T_2.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f0f30_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f1250_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f0f30_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.4, 4;
+    %load/x1p 10, v0x13f1110_0, 1;
+    %jmp T_2.5;
+T_2.4 ;
+    %mov 10, 2, 1;
+T_2.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.6, 4;
+    %load/x1p 12, v0x13f11b0_0, 1;
+    %jmp T_2.7;
+T_2.6 ;
+    %mov 12, 2, 1;
+T_2.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.8, 4;
+    %load/x1p 12, v0x13f0f30_0, 1;
+    %jmp T_2.9;
+T_2.8 ;
+    %mov 12, 2, 1;
+T_2.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f1250_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f0f30_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.10, 4;
+    %load/x1p 10, v0x13f1110_0, 1;
+    %jmp T_2.11;
+T_2.10 ;
+    %mov 10, 2, 1;
+T_2.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.12, 4;
+    %load/x1p 12, v0x13f11b0_0, 1;
+    %jmp T_2.13;
+T_2.12 ;
+    %mov 12, 2, 1;
+T_2.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_2.14, 4;
+    %load/x1p 12, v0x13f0f30_0, 1;
+    %jmp T_2.15;
+T_2.14 ;
+    %mov 12, 2, 1;
+T_2.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f1250_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f0f30_0, 9, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_0x13f0290;
+T_3 ;
+    %wait E_0x13efda0;
+    %load/v 8, v0x13f0860_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13f0900_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f0720_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f09a0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f0680_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.0, 4;
+    %load/x1p 10, v0x13f0860_0, 1;
+    %jmp T_3.1;
+T_3.0 ;
+    %mov 10, 2, 1;
+T_3.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.2, 4;
+    %load/x1p 12, v0x13f0900_0, 1;
+    %jmp T_3.3;
+T_3.2 ;
+    %mov 12, 2, 1;
+T_3.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13f0680_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f09a0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f0680_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.4, 4;
+    %load/x1p 10, v0x13f0860_0, 1;
+    %jmp T_3.5;
+T_3.4 ;
+    %mov 10, 2, 1;
+T_3.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.6, 4;
+    %load/x1p 12, v0x13f0900_0, 1;
+    %jmp T_3.7;
+T_3.6 ;
+    %mov 12, 2, 1;
+T_3.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.8, 4;
+    %load/x1p 12, v0x13f0680_0, 1;
+    %jmp T_3.9;
+T_3.8 ;
+    %mov 12, 2, 1;
+T_3.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f09a0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f0680_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.10, 4;
+    %load/x1p 10, v0x13f0860_0, 1;
+    %jmp T_3.11;
+T_3.10 ;
+    %mov 10, 2, 1;
+T_3.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.12, 4;
+    %load/x1p 12, v0x13f0900_0, 1;
+    %jmp T_3.13;
+T_3.12 ;
+    %mov 12, 2, 1;
+T_3.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.14, 4;
+    %load/x1p 12, v0x13f0680_0, 1;
+    %jmp T_3.15;
+T_3.14 ;
+    %mov 12, 2, 1;
+T_3.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f09a0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f0680_0, 9, 1;
+    %jmp T_3;
+    .thread T_3, $push;
+    .scope S_0x13ef9e0;
+T_4 ;
+    %wait E_0x13ef4f0;
+    %load/v 8, v0x13effb0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13f0050_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13efe70_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13f00f0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13efdd0_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.0, 4;
+    %load/x1p 10, v0x13effb0_0, 1;
+    %jmp T_4.1;
+T_4.0 ;
+    %mov 10, 2, 1;
+T_4.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.2, 4;
+    %load/x1p 12, v0x13f0050_0, 1;
+    %jmp T_4.3;
+T_4.2 ;
+    %mov 12, 2, 1;
+T_4.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13efdd0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13f00f0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13efdd0_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.4, 4;
+    %load/x1p 10, v0x13effb0_0, 1;
+    %jmp T_4.5;
+T_4.4 ;
+    %mov 10, 2, 1;
+T_4.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.6, 4;
+    %load/x1p 12, v0x13f0050_0, 1;
+    %jmp T_4.7;
+T_4.6 ;
+    %mov 12, 2, 1;
+T_4.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.8, 4;
+    %load/x1p 12, v0x13efdd0_0, 1;
+    %jmp T_4.9;
+T_4.8 ;
+    %mov 12, 2, 1;
+T_4.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13f00f0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13efdd0_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.10, 4;
+    %load/x1p 10, v0x13effb0_0, 1;
+    %jmp T_4.11;
+T_4.10 ;
+    %mov 10, 2, 1;
+T_4.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.12, 4;
+    %load/x1p 12, v0x13f0050_0, 1;
+    %jmp T_4.13;
+T_4.12 ;
+    %mov 12, 2, 1;
+T_4.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_4.14, 4;
+    %load/x1p 12, v0x13efdd0_0, 1;
+    %jmp T_4.15;
+T_4.14 ;
+    %mov 12, 2, 1;
+T_4.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13f00f0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13efdd0_0, 9, 1;
+    %jmp T_4;
+    .thread T_4, $push;
+    .scope S_0x13ef130;
+T_5 ;
+    %wait E_0x13eec40;
+    %load/v 8, v0x13ef700_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13ef7a0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13ef5c0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13ef840_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13ef520_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.0, 4;
+    %load/x1p 10, v0x13ef700_0, 1;
+    %jmp T_5.1;
+T_5.0 ;
+    %mov 10, 2, 1;
+T_5.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.2, 4;
+    %load/x1p 12, v0x13ef7a0_0, 1;
+    %jmp T_5.3;
+T_5.2 ;
+    %mov 12, 2, 1;
+T_5.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13ef520_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13ef840_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13ef520_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.4, 4;
+    %load/x1p 10, v0x13ef700_0, 1;
+    %jmp T_5.5;
+T_5.4 ;
+    %mov 10, 2, 1;
+T_5.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.6, 4;
+    %load/x1p 12, v0x13ef7a0_0, 1;
+    %jmp T_5.7;
+T_5.6 ;
+    %mov 12, 2, 1;
+T_5.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.8, 4;
+    %load/x1p 12, v0x13ef520_0, 1;
+    %jmp T_5.9;
+T_5.8 ;
+    %mov 12, 2, 1;
+T_5.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13ef840_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13ef520_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.10, 4;
+    %load/x1p 10, v0x13ef700_0, 1;
+    %jmp T_5.11;
+T_5.10 ;
+    %mov 10, 2, 1;
+T_5.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.12, 4;
+    %load/x1p 12, v0x13ef7a0_0, 1;
+    %jmp T_5.13;
+T_5.12 ;
+    %mov 12, 2, 1;
+T_5.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.14, 4;
+    %load/x1p 12, v0x13ef520_0, 1;
+    %jmp T_5.15;
+T_5.14 ;
+    %mov 12, 2, 1;
+T_5.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13ef840_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13ef520_0, 9, 1;
+    %jmp T_5;
+    .thread T_5, $push;
+    .scope S_0x13ee880;
+T_6 ;
+    %wait E_0x13ee390;
+    %load/v 8, v0x13eee50_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13eeef0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13eed10_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13eef90_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13eec70_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.0, 4;
+    %load/x1p 10, v0x13eee50_0, 1;
+    %jmp T_6.1;
+T_6.0 ;
+    %mov 10, 2, 1;
+T_6.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.2, 4;
+    %load/x1p 12, v0x13eeef0_0, 1;
+    %jmp T_6.3;
+T_6.2 ;
+    %mov 12, 2, 1;
+T_6.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13eec70_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13eef90_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13eec70_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.4, 4;
+    %load/x1p 10, v0x13eee50_0, 1;
+    %jmp T_6.5;
+T_6.4 ;
+    %mov 10, 2, 1;
+T_6.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.6, 4;
+    %load/x1p 12, v0x13eeef0_0, 1;
+    %jmp T_6.7;
+T_6.6 ;
+    %mov 12, 2, 1;
+T_6.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.8, 4;
+    %load/x1p 12, v0x13eec70_0, 1;
+    %jmp T_6.9;
+T_6.8 ;
+    %mov 12, 2, 1;
+T_6.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13eef90_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13eec70_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.10, 4;
+    %load/x1p 10, v0x13eee50_0, 1;
+    %jmp T_6.11;
+T_6.10 ;
+    %mov 10, 2, 1;
+T_6.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.12, 4;
+    %load/x1p 12, v0x13eeef0_0, 1;
+    %jmp T_6.13;
+T_6.12 ;
+    %mov 12, 2, 1;
+T_6.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_6.14, 4;
+    %load/x1p 12, v0x13eec70_0, 1;
+    %jmp T_6.15;
+T_6.14 ;
+    %mov 12, 2, 1;
+T_6.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13eef90_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13eec70_0, 9, 1;
+    %jmp T_6;
+    .thread T_6, $push;
+    .scope S_0x13edfd0;
+T_7 ;
+    %wait E_0x13edb00;
+    %load/v 8, v0x13ee5a0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13ee640_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13ee460_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13ee6e0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13ee3c0_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.0, 4;
+    %load/x1p 10, v0x13ee5a0_0, 1;
+    %jmp T_7.1;
+T_7.0 ;
+    %mov 10, 2, 1;
+T_7.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.2, 4;
+    %load/x1p 12, v0x13ee640_0, 1;
+    %jmp T_7.3;
+T_7.2 ;
+    %mov 12, 2, 1;
+T_7.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13ee3c0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13ee6e0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13ee3c0_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.4, 4;
+    %load/x1p 10, v0x13ee5a0_0, 1;
+    %jmp T_7.5;
+T_7.4 ;
+    %mov 10, 2, 1;
+T_7.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.6, 4;
+    %load/x1p 12, v0x13ee640_0, 1;
+    %jmp T_7.7;
+T_7.6 ;
+    %mov 12, 2, 1;
+T_7.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.8, 4;
+    %load/x1p 12, v0x13ee3c0_0, 1;
+    %jmp T_7.9;
+T_7.8 ;
+    %mov 12, 2, 1;
+T_7.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13ee6e0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13ee3c0_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.10, 4;
+    %load/x1p 10, v0x13ee5a0_0, 1;
+    %jmp T_7.11;
+T_7.10 ;
+    %mov 10, 2, 1;
+T_7.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.12, 4;
+    %load/x1p 12, v0x13ee640_0, 1;
+    %jmp T_7.13;
+T_7.12 ;
+    %mov 12, 2, 1;
+T_7.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_7.14, 4;
+    %load/x1p 12, v0x13ee3c0_0, 1;
+    %jmp T_7.15;
+T_7.14 ;
+    %mov 12, 2, 1;
+T_7.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13ee6e0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13ee3c0_0, 9, 1;
+    %jmp T_7;
+    .thread T_7, $push;
+    .scope S_0x13ed710;
+T_8 ;
+    %wait E_0x13ed800;
+    %load/v 8, v0x13edd50_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13eddf0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13edbd0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13ede90_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13edb30_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.0, 4;
+    %load/x1p 10, v0x13edd50_0, 1;
+    %jmp T_8.1;
+T_8.0 ;
+    %mov 10, 2, 1;
+T_8.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.2, 4;
+    %load/x1p 12, v0x13eddf0_0, 1;
+    %jmp T_8.3;
+T_8.2 ;
+    %mov 12, 2, 1;
+T_8.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13edb30_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13ede90_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13edb30_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.4, 4;
+    %load/x1p 10, v0x13edd50_0, 1;
+    %jmp T_8.5;
+T_8.4 ;
+    %mov 10, 2, 1;
+T_8.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.6, 4;
+    %load/x1p 12, v0x13eddf0_0, 1;
+    %jmp T_8.7;
+T_8.6 ;
+    %mov 12, 2, 1;
+T_8.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.8, 4;
+    %load/x1p 12, v0x13edb30_0, 1;
+    %jmp T_8.9;
+T_8.8 ;
+    %mov 12, 2, 1;
+T_8.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13ede90_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13edb30_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.10, 4;
+    %load/x1p 10, v0x13edd50_0, 1;
+    %jmp T_8.11;
+T_8.10 ;
+    %mov 10, 2, 1;
+T_8.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.12, 4;
+    %load/x1p 12, v0x13eddf0_0, 1;
+    %jmp T_8.13;
+T_8.12 ;
+    %mov 12, 2, 1;
+T_8.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_8.14, 4;
+    %load/x1p 12, v0x13edb30_0, 1;
+    %jmp T_8.15;
+T_8.14 ;
+    %mov 12, 2, 1;
+T_8.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13ede90_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13edb30_0, 9, 1;
+    %jmp T_8;
+    .thread T_8, $push;
+    .scope S_0x13ed290;
+T_9 ;
+    %wait E_0x13ed380;
+    %load/v 40, v0x13ed570_0, 32;
+    %movi 72, 4, 32;
+    %div 40, 72, 32;
+    %ix/get 3, 40, 32;
+    %load/av 8, v0x13ed3b0, 32;
+    %set/v v0x13ed4d0_0, 8, 32;
+    %jmp T_9;
+    .thread T_9, $push;
+    .scope S_0x13ed290;
+T_10 ;
+    %set/v v0x13ed430_0, 0, 32;
+T_10.0 ;
+    %load/v 8, v0x13ed430_0, 32;
+   %cmpi/s 8, 32, 32;
+    %jmp/0xz T_10.1, 5;
+    %ix/getv/s 3, v0x13ed430_0;
+   %jmp/1 t_0, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x13ed3b0, 0, 32;
+t_0 ;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0x13ed430_0, 32;
+    %set/v v0x13ed430_0, 8, 32;
+    %jmp T_10.0;
+T_10.1 ;
+    %vpi_call 7 39 "$readmemb", "CO_P2_test_data3.txt", v0x13ed3b0;
+    %end;
+    .thread T_10;
+    .scope S_0x13ecde0;
+T_11 ;
+    %wait E_0x13ecf50;
+    %load/v 8, v0x13ed1b0_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_11.0, 4;
+    %load/v 8, v0x13ed060_0, 5;
+    %ix/load 0, 5, 0;
+    %assign/v0 v0x13ed100_0, 0, 8;
+    %jmp T_11.1;
+T_11.0 ;
+    %load/v 8, v0x13ecfa0_0, 5;
+    %ix/load 0, 5, 0;
+    %assign/v0 v0x13ed100_0, 0, 8;
+T_11.1 ;
+    %jmp T_11;
+    .thread T_11, $push;
+    .scope S_0x13ec140;
+T_12 ;
+    %wait E_0x13ec230;
+    %load/v 8, v0x13ecd40_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_12.0, 4;
+    %ix/load 3, 0, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_1 ;
+    %ix/load 3, 1, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_2 ;
+    %ix/load 3, 2, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_3 ;
+    %ix/load 3, 3, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_4 ;
+    %ix/load 3, 4, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_5 ;
+    %ix/load 3, 5, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_6 ;
+    %ix/load 3, 6, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_7 ;
+    %ix/load 3, 7, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_8 ;
+    %ix/load 3, 8, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_9 ;
+    %ix/load 3, 9, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_10 ;
+    %ix/load 3, 10, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_11 ;
+    %ix/load 3, 11, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_12 ;
+    %ix/load 3, 12, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_13 ;
+    %ix/load 3, 13, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_14 ;
+    %ix/load 3, 14, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_15 ;
+    %ix/load 3, 15, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_16 ;
+    %ix/load 3, 16, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_17 ;
+    %ix/load 3, 17, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_18 ;
+    %ix/load 3, 18, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_19 ;
+    %ix/load 3, 19, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_20 ;
+    %ix/load 3, 20, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_21 ;
+    %ix/load 3, 21, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_22 ;
+    %ix/load 3, 22, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_23 ;
+    %ix/load 3, 23, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_24 ;
+    %ix/load 3, 24, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_25 ;
+    %ix/load 3, 25, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_26 ;
+    %ix/load 3, 26, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_27 ;
+    %ix/load 3, 27, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_28 ;
+    %ix/load 3, 28, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_29 ;
+    %ix/load 3, 29, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_30 ;
+    %ix/load 3, 30, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_31 ;
+    %ix/load 3, 31, 0; address
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 0;
+t_32 ;
+    %jmp T_12.1;
+T_12.0 ;
+    %load/v 8, v0x13eca90_0, 1;
+    %jmp/0xz  T_12.2, 8;
+    %load/v 8, v0x13ec360_0, 32;
+    %ix/getv 3, v0x13ec2a0_0;
+    %jmp/1 t_33, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 8;
+t_33 ;
+    %jmp T_12.3;
+T_12.2 ;
+    %ix/getv 3, v0x13ec2a0_0;
+    %load/av 8, v0x13ecb40, 32;
+    %ix/getv 3, v0x13ec2a0_0;
+    %jmp/1 t_34, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x13ecb40, 0, 8;
+t_34 ;
+T_12.3 ;
+T_12.1 ;
+    %jmp T_12;
+    .thread T_12;
+    .scope S_0x13e78b0;
+T_13 ;
+    %wait E_0x13e79a0;
+    %load/v 8, v0x13ebf50_0, 1;
+    %load/v 9, v0x13ebff0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebe10_0, 1;
+    %or 8, 9, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e7ae0_0, 8, 1;
+    %load/v 8, v0x13ec0a0_0, 1;
+    %load/v 9, v0x13ec4a0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebe10_0, 1;
+    %or 8, 9, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e7ae0_0, 8, 1;
+    %load/v 8, v0x13ebd70_0, 1;
+    %load/v 9, v0x13ec4a0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebff0_0, 1;
+    %or 8, 9, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e7ae0_0, 8, 1;
+    %load/v 8, v0x13ec0a0_0, 1;
+    %load/v 9, v0x13ec4a0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebf50_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebff0_0, 1;
+    %or 8, 9, 1;
+    %set/v v0x13e7a10_0, 8, 1;
+    %load/v 8, v0x13e7c10_0, 1;
+    %load/v 9, v0x13ec0a0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ec4a0_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebf50_0, 1;
+    %or 8, 9, 1;
+    %load/v 9, v0x13ebff0_0, 1;
+    %or 8, 9, 1;
+    %set/v v0x13e7d40_0, 8, 1;
+    %load/v 8, v0x13e7c10_0, 1;
+    %set/v v0x13e7cc0_0, 8, 1;
+    %load/v 8, v0x13ebd70_0, 1;
+    %load/v 9, v0x13ebe10_0, 1;
+    %or 8, 9, 1;
+    %set/v v0x13e7b90_0, 8, 1;
+    %load/v 8, v0x13ebff0_0, 1;
+    %set/v v0x13e7e20_0, 8, 1;
+    %jmp T_13;
+    .thread T_13, $push;
+    .scope S_0x13e74e0;
+T_14 ;
+    %set/v v0x13e7750_0, 0, 1;
+    %end;
+    .thread T_14;
+    .scope S_0x13e74e0;
+T_15 ;
+    %wait E_0x13e75d0;
+    %set/v v0x13e7750_0, 0, 1;
+    %load/v 8, v0x13e76d0_0, 3;
+    %cmpi/u 8, 0, 3;
+    %jmp/1 T_15.0, 6;
+    %cmpi/u 8, 1, 3;
+    %jmp/1 T_15.1, 6;
+    %cmpi/u 8, 2, 3;
+    %jmp/1 T_15.2, 6;
+    %cmpi/u 8, 3, 3;
+    %jmp/1 T_15.3, 6;
+    %cmpi/u 8, 4, 3;
+    %jmp/1 T_15.4, 6;
+    %cmpi/u 8, 5, 3;
+    %jmp/1 T_15.5, 6;
+    %cmpi/u 8, 6, 3;
+    %jmp/1 T_15.6, 6;
+    %jmp T_15.7;
+T_15.0 ;
+    %load/v 8, v0x13e7800_0, 6;
+    %cmpi/u 8, 33, 6;
+    %jmp/1 T_15.8, 6;
+    %cmpi/u 8, 35, 6;
+    %jmp/1 T_15.9, 6;
+    %cmpi/u 8, 36, 6;
+    %jmp/1 T_15.10, 6;
+    %cmpi/u 8, 37, 6;
+    %jmp/1 T_15.11, 6;
+    %cmpi/u 8, 42, 6;
+    %jmp/1 T_15.12, 6;
+    %cmpi/u 8, 3, 6;
+    %jmp/1 T_15.13, 6;
+    %cmpi/u 8, 7, 6;
+    %jmp/1 T_15.14, 6;
+    %jmp T_15.15;
+T_15.8 ;
+    %movi 8, 2, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.15;
+T_15.9 ;
+    %movi 8, 6, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.15;
+T_15.10 ;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 0;
+    %jmp T_15.15;
+T_15.11 ;
+    %movi 8, 1, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.15;
+T_15.12 ;
+    %movi 8, 7, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.15;
+T_15.13 ;
+    %movi 8, 9, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x13e7750_0, 0, 1;
+    %jmp T_15.15;
+T_15.14 ;
+    %movi 8, 9, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.15;
+T_15.15 ;
+    %jmp T_15.7;
+T_15.1 ;
+    %movi 8, 6, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.2 ;
+    %movi 8, 2, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.3 ;
+    %movi 8, 7, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.4 ;
+    %movi 8, 10, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.5 ;
+    %movi 8, 1, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.6 ;
+    %movi 8, 11, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x13e7600_0, 0, 8;
+    %jmp T_15.7;
+T_15.7 ;
+    %jmp T_15;
+    .thread T_15, $push;
+    .scope S_0x13e69f0;
+T_16 ;
+    %wait E_0x13e6b60;
+    %load/v 8, v0x13e6db0_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_16.0, 4;
+    %load/v 8, v0x13e6c90_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6d30_0, 0, 8;
+    %jmp T_16.1;
+T_16.0 ;
+    %load/v 8, v0x13e6bd0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6d30_0, 0, 8;
+T_16.1 ;
+    %jmp T_16;
+    .thread T_16, $push;
+    .scope S_0x13e6570;
+T_17 ;
+    %wait E_0x13e66e0;
+    %load/v 8, v0x13e6940_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_17.0, 4;
+    %load/v 8, v0x13e67f0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6890_0, 0, 8;
+    %jmp T_17.1;
+T_17.0 ;
+    %load/v 8, v0x13e6730_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6890_0, 0, 8;
+T_17.1 ;
+    %jmp T_17;
+    .thread T_17, $push;
+    .scope S_0x13e60d0;
+T_18 ;
+    %wait E_0x13e5f60;
+    %load/v 8, v0x13e64c0_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_18.0, 4;
+    %load/v 8, v0x13e6360_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6410_0, 0, 8;
+    %jmp T_18.1;
+T_18.0 ;
+    %load/v 8, v0x13e62a0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e6410_0, 0, 8;
+T_18.1 ;
+    %jmp T_18;
+    .thread T_18, $push;
+    .scope S_0x13e5c00;
+T_19 ;
+    %wait E_0x13e5cf0;
+    %load/v 8, v0x13e5d20_0, 4;
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_19.0, 6;
+    %cmpi/u 8, 1, 4;
+    %jmp/1 T_19.1, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_19.2, 6;
+    %cmpi/u 8, 6, 4;
+    %jmp/1 T_19.3, 6;
+    %cmpi/u 8, 7, 4;
+    %jmp/1 T_19.4, 6;
+    %cmpi/u 8, 12, 4;
+    %jmp/1 T_19.5, 6;
+    %cmpi/u 8, 9, 4;
+    %jmp/1 T_19.6, 6;
+    %cmpi/u 8, 10, 4;
+    %jmp/1 T_19.7, 6;
+    %cmpi/u 8, 11, 4;
+    %jmp/1 T_19.8, 6;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e5da0_0, 0, 0;
+    %jmp T_19.10;
+T_19.0 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %and 8, 40, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.1 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %or 8, 40, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.2 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %add 8, 40, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.3 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %sub 8, 40, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.4 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %cmp/u 8, 40, 32;
+    %mov 8, 5, 1;
+    %jmp/0  T_19.11, 8;
+    %movi 9, 1, 32;
+    %jmp/1  T_19.13, 8;
+T_19.11 ; End of true expr.
+    %jmp/0  T_19.12, 8;
+ ; End of false expr.
+    %blend  9, 0, 32; Condition unknown.
+    %jmp  T_19.13;
+T_19.12 ;
+    %mov 9, 0, 32; Return false value
+T_19.13 ;
+    %set/v v0x13e5da0_0, 9, 32;
+    %jmp T_19.10;
+T_19.5 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %or 8, 40, 32;
+    %inv 8, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.6 ;
+    %load/v 8, v0x13e5f90_0, 32;
+    %load/v 40, v0x13e5ee0_0, 32;
+    %ix/get 0, 40, 32;
+    %shiftr/s/i0  8, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.7 ;
+    %load/v 8, v0x13e5f90_0, 32;
+    %ix/load 0, 16, 0;
+    %mov 4, 0, 1;
+    %shiftl/i0  8, 32;
+    %set/v v0x13e5da0_0, 8, 32;
+    %jmp T_19.10;
+T_19.8 ;
+    %load/v 8, v0x13e5ee0_0, 32;
+    %load/v 40, v0x13e5f90_0, 32;
+    %cmp/u 8, 40, 32;
+    %inv 4, 1;
+    %jmp/0xz  T_19.14, 4;
+    %movi 8, 1, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e5da0_0, 0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x13e5e40_0, 0, 1;
+    %jmp T_19.15;
+T_19.14 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e5da0_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x13e5e40_0, 0, 0;
+T_19.15 ;
+    %jmp T_19.10;
+T_19.10 ;
+    %load/v 8, v0x13e5da0_0, 32;
+    %cmpi/u 8, 0, 32;
+    %mov 8, 4, 1;
+    %set/v v0x13e5e40_0, 8, 1;
+    %jmp T_19;
+    .thread T_19, $push;
+    .scope S_0x13e5080;
+T_20 ;
+    %wait E_0x13e4b90;
+    %load/v 8, v0x13e5650_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e56f0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e5510_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e5790_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e5470_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.0, 4;
+    %load/x1p 10, v0x13e5650_0, 1;
+    %jmp T_20.1;
+T_20.0 ;
+    %mov 10, 2, 1;
+T_20.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.2, 4;
+    %load/x1p 12, v0x13e56f0_0, 1;
+    %jmp T_20.3;
+T_20.2 ;
+    %mov 12, 2, 1;
+T_20.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e5470_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e5790_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e5470_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.4, 4;
+    %load/x1p 10, v0x13e5650_0, 1;
+    %jmp T_20.5;
+T_20.4 ;
+    %mov 10, 2, 1;
+T_20.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.6, 4;
+    %load/x1p 12, v0x13e56f0_0, 1;
+    %jmp T_20.7;
+T_20.6 ;
+    %mov 12, 2, 1;
+T_20.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.8, 4;
+    %load/x1p 12, v0x13e5470_0, 1;
+    %jmp T_20.9;
+T_20.8 ;
+    %mov 12, 2, 1;
+T_20.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e5790_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e5470_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.10, 4;
+    %load/x1p 10, v0x13e5650_0, 1;
+    %jmp T_20.11;
+T_20.10 ;
+    %mov 10, 2, 1;
+T_20.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.12, 4;
+    %load/x1p 12, v0x13e56f0_0, 1;
+    %jmp T_20.13;
+T_20.12 ;
+    %mov 12, 2, 1;
+T_20.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_20.14, 4;
+    %load/x1p 12, v0x13e5470_0, 1;
+    %jmp T_20.15;
+T_20.14 ;
+    %mov 12, 2, 1;
+T_20.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e5790_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e5470_0, 9, 1;
+    %jmp T_20;
+    .thread T_20, $push;
+    .scope S_0x13e47d0;
+T_21 ;
+    %wait E_0x13e42e0;
+    %load/v 8, v0x13e4da0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e4e40_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e4c60_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e4ee0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e4bc0_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.0, 4;
+    %load/x1p 10, v0x13e4da0_0, 1;
+    %jmp T_21.1;
+T_21.0 ;
+    %mov 10, 2, 1;
+T_21.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.2, 4;
+    %load/x1p 12, v0x13e4e40_0, 1;
+    %jmp T_21.3;
+T_21.2 ;
+    %mov 12, 2, 1;
+T_21.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e4bc0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e4ee0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e4bc0_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.4, 4;
+    %load/x1p 10, v0x13e4da0_0, 1;
+    %jmp T_21.5;
+T_21.4 ;
+    %mov 10, 2, 1;
+T_21.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.6, 4;
+    %load/x1p 12, v0x13e4e40_0, 1;
+    %jmp T_21.7;
+T_21.6 ;
+    %mov 12, 2, 1;
+T_21.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.8, 4;
+    %load/x1p 12, v0x13e4bc0_0, 1;
+    %jmp T_21.9;
+T_21.8 ;
+    %mov 12, 2, 1;
+T_21.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e4ee0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e4bc0_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.10, 4;
+    %load/x1p 10, v0x13e4da0_0, 1;
+    %jmp T_21.11;
+T_21.10 ;
+    %mov 10, 2, 1;
+T_21.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.12, 4;
+    %load/x1p 12, v0x13e4e40_0, 1;
+    %jmp T_21.13;
+T_21.12 ;
+    %mov 12, 2, 1;
+T_21.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_21.14, 4;
+    %load/x1p 12, v0x13e4bc0_0, 1;
+    %jmp T_21.15;
+T_21.14 ;
+    %mov 12, 2, 1;
+T_21.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e4ee0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e4bc0_0, 9, 1;
+    %jmp T_21;
+    .thread T_21, $push;
+    .scope S_0x13e3f20;
+T_22 ;
+    %wait E_0x13e3a30;
+    %load/v 8, v0x13e44f0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e4590_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e43b0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e4630_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e4310_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.0, 4;
+    %load/x1p 10, v0x13e44f0_0, 1;
+    %jmp T_22.1;
+T_22.0 ;
+    %mov 10, 2, 1;
+T_22.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.2, 4;
+    %load/x1p 12, v0x13e4590_0, 1;
+    %jmp T_22.3;
+T_22.2 ;
+    %mov 12, 2, 1;
+T_22.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e4310_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e4630_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e4310_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.4, 4;
+    %load/x1p 10, v0x13e44f0_0, 1;
+    %jmp T_22.5;
+T_22.4 ;
+    %mov 10, 2, 1;
+T_22.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.6, 4;
+    %load/x1p 12, v0x13e4590_0, 1;
+    %jmp T_22.7;
+T_22.6 ;
+    %mov 12, 2, 1;
+T_22.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.8, 4;
+    %load/x1p 12, v0x13e4310_0, 1;
+    %jmp T_22.9;
+T_22.8 ;
+    %mov 12, 2, 1;
+T_22.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e4630_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e4310_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.10, 4;
+    %load/x1p 10, v0x13e44f0_0, 1;
+    %jmp T_22.11;
+T_22.10 ;
+    %mov 10, 2, 1;
+T_22.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.12, 4;
+    %load/x1p 12, v0x13e4590_0, 1;
+    %jmp T_22.13;
+T_22.12 ;
+    %mov 12, 2, 1;
+T_22.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_22.14, 4;
+    %load/x1p 12, v0x13e4310_0, 1;
+    %jmp T_22.15;
+T_22.14 ;
+    %mov 12, 2, 1;
+T_22.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e4630_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e4310_0, 9, 1;
+    %jmp T_22;
+    .thread T_22, $push;
+    .scope S_0x13e3670;
+T_23 ;
+    %wait E_0x13e3180;
+    %load/v 8, v0x13e3c40_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e3ce0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e3b00_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e3d80_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e3a60_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.0, 4;
+    %load/x1p 10, v0x13e3c40_0, 1;
+    %jmp T_23.1;
+T_23.0 ;
+    %mov 10, 2, 1;
+T_23.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.2, 4;
+    %load/x1p 12, v0x13e3ce0_0, 1;
+    %jmp T_23.3;
+T_23.2 ;
+    %mov 12, 2, 1;
+T_23.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e3a60_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e3d80_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e3a60_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.4, 4;
+    %load/x1p 10, v0x13e3c40_0, 1;
+    %jmp T_23.5;
+T_23.4 ;
+    %mov 10, 2, 1;
+T_23.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.6, 4;
+    %load/x1p 12, v0x13e3ce0_0, 1;
+    %jmp T_23.7;
+T_23.6 ;
+    %mov 12, 2, 1;
+T_23.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.8, 4;
+    %load/x1p 12, v0x13e3a60_0, 1;
+    %jmp T_23.9;
+T_23.8 ;
+    %mov 12, 2, 1;
+T_23.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e3d80_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e3a60_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.10, 4;
+    %load/x1p 10, v0x13e3c40_0, 1;
+    %jmp T_23.11;
+T_23.10 ;
+    %mov 10, 2, 1;
+T_23.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.12, 4;
+    %load/x1p 12, v0x13e3ce0_0, 1;
+    %jmp T_23.13;
+T_23.12 ;
+    %mov 12, 2, 1;
+T_23.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_23.14, 4;
+    %load/x1p 12, v0x13e3a60_0, 1;
+    %jmp T_23.15;
+T_23.14 ;
+    %mov 12, 2, 1;
+T_23.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e3d80_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e3a60_0, 9, 1;
+    %jmp T_23;
+    .thread T_23, $push;
+    .scope S_0x13e2dc0;
+T_24 ;
+    %wait E_0x13e28d0;
+    %load/v 8, v0x13e3390_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e3430_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e3250_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e34d0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e31b0_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.0, 4;
+    %load/x1p 10, v0x13e3390_0, 1;
+    %jmp T_24.1;
+T_24.0 ;
+    %mov 10, 2, 1;
+T_24.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.2, 4;
+    %load/x1p 12, v0x13e3430_0, 1;
+    %jmp T_24.3;
+T_24.2 ;
+    %mov 12, 2, 1;
+T_24.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e31b0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e34d0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e31b0_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.4, 4;
+    %load/x1p 10, v0x13e3390_0, 1;
+    %jmp T_24.5;
+T_24.4 ;
+    %mov 10, 2, 1;
+T_24.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.6, 4;
+    %load/x1p 12, v0x13e3430_0, 1;
+    %jmp T_24.7;
+T_24.6 ;
+    %mov 12, 2, 1;
+T_24.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.8, 4;
+    %load/x1p 12, v0x13e31b0_0, 1;
+    %jmp T_24.9;
+T_24.8 ;
+    %mov 12, 2, 1;
+T_24.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e34d0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e31b0_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.10, 4;
+    %load/x1p 10, v0x13e3390_0, 1;
+    %jmp T_24.11;
+T_24.10 ;
+    %mov 10, 2, 1;
+T_24.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.12, 4;
+    %load/x1p 12, v0x13e3430_0, 1;
+    %jmp T_24.13;
+T_24.12 ;
+    %mov 12, 2, 1;
+T_24.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_24.14, 4;
+    %load/x1p 12, v0x13e31b0_0, 1;
+    %jmp T_24.15;
+T_24.14 ;
+    %mov 12, 2, 1;
+T_24.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e34d0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e31b0_0, 9, 1;
+    %jmp T_24;
+    .thread T_24, $push;
+    .scope S_0x13e2510;
+T_25 ;
+    %wait E_0x13e2020;
+    %load/v 8, v0x13e2ae0_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e2b80_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e29a0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e2c20_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e2900_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.0, 4;
+    %load/x1p 10, v0x13e2ae0_0, 1;
+    %jmp T_25.1;
+T_25.0 ;
+    %mov 10, 2, 1;
+T_25.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.2, 4;
+    %load/x1p 12, v0x13e2b80_0, 1;
+    %jmp T_25.3;
+T_25.2 ;
+    %mov 12, 2, 1;
+T_25.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e2900_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e2c20_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e2900_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.4, 4;
+    %load/x1p 10, v0x13e2ae0_0, 1;
+    %jmp T_25.5;
+T_25.4 ;
+    %mov 10, 2, 1;
+T_25.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.6, 4;
+    %load/x1p 12, v0x13e2b80_0, 1;
+    %jmp T_25.7;
+T_25.6 ;
+    %mov 12, 2, 1;
+T_25.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.8, 4;
+    %load/x1p 12, v0x13e2900_0, 1;
+    %jmp T_25.9;
+T_25.8 ;
+    %mov 12, 2, 1;
+T_25.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e2c20_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e2900_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.10, 4;
+    %load/x1p 10, v0x13e2ae0_0, 1;
+    %jmp T_25.11;
+T_25.10 ;
+    %mov 10, 2, 1;
+T_25.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.12, 4;
+    %load/x1p 12, v0x13e2b80_0, 1;
+    %jmp T_25.13;
+T_25.12 ;
+    %mov 12, 2, 1;
+T_25.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_25.14, 4;
+    %load/x1p 12, v0x13e2900_0, 1;
+    %jmp T_25.15;
+T_25.14 ;
+    %mov 12, 2, 1;
+T_25.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e2c20_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e2900_0, 9, 1;
+    %jmp T_25;
+    .thread T_25, $push;
+    .scope S_0x13e1c60;
+T_26 ;
+    %wait E_0x13e16e0;
+    %load/v 8, v0x13e2230_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e22d0_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e20f0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e2370_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e2050_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.0, 4;
+    %load/x1p 10, v0x13e2230_0, 1;
+    %jmp T_26.1;
+T_26.0 ;
+    %mov 10, 2, 1;
+T_26.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.2, 4;
+    %load/x1p 12, v0x13e22d0_0, 1;
+    %jmp T_26.3;
+T_26.2 ;
+    %mov 12, 2, 1;
+T_26.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e2050_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e2370_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e2050_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.4, 4;
+    %load/x1p 10, v0x13e2230_0, 1;
+    %jmp T_26.5;
+T_26.4 ;
+    %mov 10, 2, 1;
+T_26.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.6, 4;
+    %load/x1p 12, v0x13e22d0_0, 1;
+    %jmp T_26.7;
+T_26.6 ;
+    %mov 12, 2, 1;
+T_26.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.8, 4;
+    %load/x1p 12, v0x13e2050_0, 1;
+    %jmp T_26.9;
+T_26.8 ;
+    %mov 12, 2, 1;
+T_26.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e2370_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e2050_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.10, 4;
+    %load/x1p 10, v0x13e2230_0, 1;
+    %jmp T_26.11;
+T_26.10 ;
+    %mov 10, 2, 1;
+T_26.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.12, 4;
+    %load/x1p 12, v0x13e22d0_0, 1;
+    %jmp T_26.13;
+T_26.12 ;
+    %mov 12, 2, 1;
+T_26.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_26.14, 4;
+    %load/x1p 12, v0x13e2050_0, 1;
+    %jmp T_26.15;
+T_26.14 ;
+    %mov 12, 2, 1;
+T_26.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e2370_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e2050_0, 9, 1;
+    %jmp T_26;
+    .thread T_26, $push;
+    .scope S_0x13e12f0;
+T_27 ;
+    %wait E_0x13e13e0;
+    %load/v 8, v0x13e1930_0, 1; Select 1 out of 4 bits
+    %mov 9, 0, 1;
+    %load/v 10, v0x13e1a20_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e17b0_0, 1;
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e1ac0_0, 8, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x13e1710_0, 9, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.0, 4;
+    %load/x1p 10, v0x13e1930_0, 1;
+    %jmp T_27.1;
+T_27.0 ;
+    %mov 10, 2, 1;
+T_27.1 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.2, 4;
+    %load/x1p 12, v0x13e1a20_0, 1;
+    %jmp T_27.3;
+T_27.2 ;
+    %mov 12, 2, 1;
+T_27.3 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %load/v 10, v0x13e1710_0, 1; Select 1 out of 4 bits
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e1ac0_0, 8, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0x13e1710_0, 9, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.4, 4;
+    %load/x1p 10, v0x13e1930_0, 1;
+    %jmp T_27.5;
+T_27.4 ;
+    %mov 10, 2, 1;
+T_27.5 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.6, 4;
+    %load/x1p 12, v0x13e1a20_0, 1;
+    %jmp T_27.7;
+T_27.6 ;
+    %mov 12, 2, 1;
+T_27.7 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.8, 4;
+    %load/x1p 12, v0x13e1710_0, 1;
+    %jmp T_27.9;
+T_27.8 ;
+    %mov 12, 2, 1;
+T_27.9 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e1ac0_0, 8, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0x13e1710_0, 9, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.10, 4;
+    %load/x1p 10, v0x13e1930_0, 1;
+    %jmp T_27.11;
+T_27.10 ;
+    %mov 10, 2, 1;
+T_27.11 ;
+    %mov 8, 10, 1; Move signal select into place
+    %mov 9, 0, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.12, 4;
+    %load/x1p 12, v0x13e1a20_0, 1;
+    %jmp T_27.13;
+T_27.12 ;
+    %mov 12, 2, 1;
+T_27.13 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_27.14, 4;
+    %load/x1p 12, v0x13e1710_0, 1;
+    %jmp T_27.15;
+T_27.14 ;
+    %mov 12, 2, 1;
+T_27.15 ;
+    %mov 10, 12, 1; Move signal select into place
+    %mov 11, 0, 1;
+    %add 8, 10, 2;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e1ac0_0, 8, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0x13e1710_0, 9, 1;
+    %jmp T_27;
+    .thread T_27, $push;
+    .scope S_0x1396380;
+T_28 ;
+    %wait E_0x1385040;
+    %load/v 8, v0x13e0db0_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_28.0, 4;
+    %load/v 8, v0x13e0c70_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e0d10_0, 0, 8;
+    %jmp T_28.1;
+T_28.0 ;
+    %load/v 8, v0x13cc7f0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13e0d10_0, 0, 8;
+T_28.1 ;
+    %jmp T_28;
+    .thread T_28, $push;
+    .scope S_0x1390690;
+T_29 ;
+    %set/v v0x13f2a90_0, 0, 32;
+    %end;
+    .thread T_29;
+    .scope S_0x1390690;
+T_30 ;
+    %wait E_0x1360dc0;
+    %load/v 8, v0x13f33d0_0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x13f2a90_0, 0, 8;
+    %jmp T_30;
+    .thread T_30, $push;
+    .scope S_0x13937d0;
+T_31 ;
+    %delay 5, 0;
+    %load/v 8, v0x13f39b0_0, 1;
+    %inv 8, 1;
+    %set/v v0x13f39b0_0, 8, 1;
+    %jmp T_31;
+    .thread T_31;
+    .scope S_0x13937d0;
+T_32 ;
+    %vpi_func 2 33 "$fopen", 8, 32, "CO_P2_Result.txt";
+    %set/v v0x13f3bb0_0, 8, 32;
+    %set/v v0x13f39b0_0, 0, 1;
+    %set/v v0x13f3a30_0, 0, 1;
+    %set/v v0x13f3ab0_0, 0, 32;
+    %movi 8, 25, 32;
+    %set/v v0x13f3b30_0, 8, 32;
+    %delay 10, 0;
+    %set/v v0x13f3a30_0, 1, 1;
+    %delay 250, 0;
+    %vpi_call 2 39 "$fclose", v0x13f3bb0_0;
+    %vpi_call 2 39 "$stop";
+    %end;
+    .thread T_32;
+    .scope S_0x13937d0;
+T_33 ;
+    %wait E_0x13e5440;
+    %load/v 8, v0x13f3ab0_0, 32;
+    %mov 40, 39, 1;
+    %addi 8, 1, 33;
+    %set/v v0x13f3ab0_0, 8, 32;
+    %load/v 8, v0x13f3ab0_0, 32;
+    %cmpi/u 8, 25, 32;
+    %jmp/0xz  T_33.0, 4;
+    %vpi_call 2 46 "$fdisplay", v0x13f3bb0_0, "r0=%d, r1=%d, r2=%d, r3=%d, r4=%d, r5=%d, r6=%d, r7=%d, r8=%d, r9=%d, r10=%d, r11=%d, r12=%d", &A<v0x13ecb40, 0>, &A<v0x13ecb40, 1>, &A<v0x13ecb40, 2>, &A<v0x13ecb40, 3>, &A<v0x13ecb40, 4>, &A<v0x13ecb40, 5>, &A<v0x13ecb40, 6>, &A<v0x13ecb40, 7>, &A<v0x13ecb40, 8>, &A<v0x13ecb40, 9>, &A<v0x13ecb40, 10>, &A<v0x13ecb40, 11>, &A<v0x13ecb40, 12>;
+T_33.0 ;
+    %jmp T_33;
+    .thread T_33;
+# The file index is used to find the file name in the following table.
+:file_names 16;
+    "N/A";
+    "<interactive>";
+    "Test_Bench.v";
+    "Simple_Single_CPU.v";
+    "ProgramCounter.v";
+    "Adder.v";
+    "Adder_4bit.v";
+    "Instr_Memory.v";
+    "MUX_2to1.v";
+    "Reg_File.v";
+    "Decoder.v";
+    "ALU_Ctrl.v";
+    "Sign_Extend.v";
+    "Zero_Extend.v";
+    "ALU.v";
+    "Shift_Left_Two_32.v";
